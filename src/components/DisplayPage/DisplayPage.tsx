@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { fetchTechnique } from "../../api/TechniquesAPI";
+
+import styles from "./DisplayPage.module.css";
 interface displayPage {
   id: string;
 }
@@ -22,11 +24,11 @@ const DisplayPage = ({ id }: displayPage) => {
       {result.length !== 0 ? (
         result.map((item: any) => {
           return (
-            <div key={item.id}>
+            <article className={styles.container} key={item.id}>
               <h1>{item.title}</h1>
               <p>{item.intro}</p>
-              <ReactMarkdown children={item.content} />
-            </div>
+              <ReactMarkdown className={styles.richDescription} children={item.content} />
+            </article>
           );
         })
       ) : (
