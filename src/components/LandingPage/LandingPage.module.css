@@ -1,0 +1,27 @@
+.landingContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    padding: 16px 0;
+    margin: 8px 0;
+    max-width: 256px;
+}
+
+.cardContainer {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+    .cardContainer {
+        flex-direction: row;
+    }
+}
