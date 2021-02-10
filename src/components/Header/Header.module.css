@@ -1,0 +1,31 @@
+.header {
+    position: sticky;
+    top: 0;
+    list-style: none;
+    padding: 8px;
+    background-color: #FBFCFD;
+    border-bottom: 1px solid #D5DDE5;
+    z-index: 1337;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-start;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.about {
+    margin-left: auto;
+}
+
+li {
+    padding: 16px;
+}
