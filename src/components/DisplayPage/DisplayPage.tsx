@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { fetchTechnique } from "../../api/TechniquesAPI";
+import { fetchExample } from "../../api/ExamplesAPI";
+import PreviewCard from "../PreviewCard/PreviewCard";
 
 import styles from "./DisplayPage.module.css";
 interface displayPage {
@@ -12,12 +14,13 @@ const DisplayPage = ({ match }: displayPage) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      
       const data = await fetchTechnique(match.params.id);
       setResult(await data?.json());
     };
 
     fetchData();
-  }, [match.params.id]);
+  }, [match.params.id, match.params.path]);
 
   return (
     <>
@@ -27,7 +30,26 @@ const DisplayPage = ({ match }: displayPage) => {
             <article className={styles.container} key={item.id}>
               <h1>{item.title}</h1>
               <p>{item.intro}</p>
-              <ReactMarkdown className={styles.richDescription} children={item.content} />
+              <ReactMarkdown
+                className={styles.richDescription}
+                children={item.content}
+              />
+                {item.examples.length !== 0
+                  ? <article>
+                    <h2>Examples</h2>
+                    {item.examples.map((example: any) => {
+                      return (
+                        <PreviewCard
+                          title={example.title}
+                          intro={example.intro}
+                          resource={"examples"}
+                          id={example.id}
+                        />
+                      );
+                    }
+                    )}
+                  </article>
+                  : null}
             </article>
           );
         })

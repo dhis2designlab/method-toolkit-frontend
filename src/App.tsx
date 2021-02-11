@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import LandingPage from "./components/LandingPage/LandingPage";
 import DoPage from "./components/DoPage/DoPage";
 import DisplayPage from "./components/DisplayPage/DisplayPage";
+import Example from "./components/Example/Example";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" exact component={LandingPage} />
           <Route path="/do" component={DoPage} />
           <Route path="/techniques/:id" component={DisplayPage} />
+          <Route path="/examples/:id" component={Example} />
         </Switch>
         <Footer />
       </Router>

@@ -42,6 +42,7 @@ const DoPage = () => {
                 title={item.title}
                 intro={item.intro}
                 id={item.slug}
+                resource={"techniques"}
               />
             );
           })
