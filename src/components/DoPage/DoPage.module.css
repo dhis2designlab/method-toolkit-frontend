@@ -1,4 +1,4 @@
-.landingContainer {
+.doPageContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,25 +6,17 @@
     padding: 1em;
 }
 
-.card {
-    padding: 18px 0;
-    margin: 8px 0;
-    max-width: 256px;
-    cursor: pointer;
-}
-
 .cardContainer {
-    width: 100%;
-    max-width: 1024px;
-    margin-top: 16px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: column;
 }
 
 @media only screen and (min-width: 768px) {
     .cardContainer {
+        max-width: 1250px;
         flex-direction: row;
     }
 }
