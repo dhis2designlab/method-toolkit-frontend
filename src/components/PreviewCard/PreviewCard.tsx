@@ -7,10 +7,11 @@ import styles from "./PreviewCard.module.css";
 interface previewCard {
   title: string;
   intro: string;
+  resource: string;
   id: string;
 }
 
-const PreviewCard = ({ title, intro, id }: previewCard) => {
+const PreviewCard = ({ title, intro, id, resource }: previewCard) => {
   // Shows the first 100 characters in the card, if there's less than 100 characters
   // the sent in text gets returned.
   const previewText = (text: string) => {
@@ -21,7 +22,7 @@ const PreviewCard = ({ title, intro, id }: previewCard) => {
 
   return (
     <div className={styles.container}>
-    <Link to={`/techniques/${id}`}>
+    <Link to={`/${resource}/${id}`}>
       <Card className={styles.card}>
         <h3>{title}</h3>
         <p>{previewText(intro)}</p>
