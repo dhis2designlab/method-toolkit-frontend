@@ -1,7 +1,13 @@
+
+.container a {
+    color: #000;
+    text-decoration: none;
+}
+
 .card {
-    padding: 18px 0;
+    padding: 8px 16px;
     margin: 8px 0;
-    max-width: 512px;
+    max-width: 264px;
     width: 100%;
     cursor: pointer;
 }
@@ -12,4 +18,10 @@
 
 .card p {
     text-align: left;
+}
+
+@media only screen and (min-width: 768px) {
+    .card {
+        max-width: 512px;
+    }
 }
