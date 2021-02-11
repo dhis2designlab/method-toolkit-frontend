@@ -41,6 +41,7 @@ const DoPage = () => {
                 key={item.id}
                 title={item.title}
                 intro={item.intro}
+                id={item.slug}
               />
             );
           })

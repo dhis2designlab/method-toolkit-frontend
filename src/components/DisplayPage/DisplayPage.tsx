@@ -4,20 +4,20 @@ import { fetchTechnique } from "../../api/TechniquesAPI";
 
 import styles from "./DisplayPage.module.css";
 interface displayPage {
-  id: string;
+  match: any;
 }
 
-const DisplayPage = ({ id }: displayPage) => {
+const DisplayPage = ({ match }: displayPage) => {
   const [result, setResult] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchTechnique(id);
+      const data = await fetchTechnique(match.params.id);
       setResult(await data?.json());
     };
 
     fetchData();
-  }, [id]);
+  }, [match.params.id]);
 
   return (
     <>

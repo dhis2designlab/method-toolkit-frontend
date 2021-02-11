@@ -1,14 +1,16 @@
 import React from "react";
 import { Card } from "@dhis2/ui-core";
+import { Link } from "react-router-dom";
 
 import styles from "./PreviewCard.module.css";
 
 interface previewCard {
   title: string;
   intro: string;
+  id: string;
 }
 
-const PreviewCard = ({ title, intro }: previewCard) => {
+const PreviewCard = ({ title, intro, id }: previewCard) => {
   // Shows the first 100 characters in the card, if there's less than 100 characters
   // the sent in text gets returned.
   const previewText = (text: string) => {
@@ -18,10 +20,14 @@ const PreviewCard = ({ title, intro }: previewCard) => {
   };
 
   return (
-    <Card className={styles.card}>
-      <h3>{title}</h3>
-      <p>{previewText(intro)}</p>
-    </Card>
+    <div className={styles.container}>
+    <Link to={`/techniques/${id}`}>
+      <Card className={styles.card}>
+        <h3>{title}</h3>
+        <p>{previewText(intro)}</p>
+      </Card>
+    </Link>
+    </div>
   );
 };
 

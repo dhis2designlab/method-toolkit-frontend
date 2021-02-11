@@ -1,5 +1,6 @@
 import React from "react";
 import dhis2DesignLab from "../../media/dhis2_design_lab_logo.png";
+import { Link } from "react-router-dom";
 
 import styles from "./Header.module.css";
 
@@ -7,15 +8,25 @@ const Header = (): JSX.Element => {
   return (
     <nav className={styles.header}>
       <div className={styles.container}>
-        <img
-          className={styles.logo}
-          src={dhis2DesignLab}
-          alt={"DHIS2 Design Lab"}
-        />
-        <li>Do</li>
-        <li>Plan</li>
-        <li>Learn</li>
-        <li className={styles.about}>About</li>
+        <Link to="/">
+          <img
+            className={styles.logo}
+            src={dhis2DesignLab}
+            alt={"DHIS2 Design Lab"}
+          />
+        </Link>
+        <Link to="/do">
+          <li>Do</li>
+        </Link>
+        <Link to="/plan">
+          <li>Plan</li>
+        </Link>
+        <Link to="/learn">
+          <li>Learn</li>
+        </Link>
+        <Link className={styles.about} to="/about">
+          <li>About</li>
+        </Link>
       </div>
     </nav>
   );
