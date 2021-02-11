@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { fetchTechnique } from "../../api/TechniquesAPI";
-import { fetchExample } from "../../api/ExamplesAPI";
 import PreviewCard from "../PreviewCard/PreviewCard";
 
 import styles from "./DisplayPage.module.css";
