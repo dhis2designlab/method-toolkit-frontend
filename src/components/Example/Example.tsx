@@ -4,11 +4,11 @@ import { fetchExample } from "../../api/ExamplesAPI";
 
 import styles from "./Example.module.css";
 
-interface displayPage {
+interface example {
   match: any;
 }
 
-const DisplayPage = ({ match }: displayPage) => {
+const Example = ({ match }: example) => {
   const [result, setResult]: any = useState(null);
 
   useEffect(() => {
@@ -38,4 +38,4 @@ const DisplayPage = ({ match }: displayPage) => {
   );
 };
 
-export default DisplayPage;
+export default Example;

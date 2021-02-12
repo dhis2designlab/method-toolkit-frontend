@@ -1,30 +1,39 @@
 import React, { useState, useEffect } from "react";
 import SearchField from "../SearchField/SearchField";
 import { fetchAllTechniques } from "../../api/TechniquesAPI";
+import { fetchAllActivities } from "../../api/ActivityAPI";
 import PreviewCard from "../PreviewCard/PreviewCard";
 
 import styles from "./DoPage.module.css";
 
 const DoPage = () => {
   const [search, setSearch] = useState("");
-  const [state, setState] = useState([]);
+  const [techniques, setTechniques] = useState([]);
+  const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchTechniques = async () => {
       const data = await fetchAllTechniques();
-      setState(await data?.json());
+      setTechniques(await data?.json());
     };
-    fetchData();
+    const fetchActivities = async () => {
+      const data = await fetchAllActivities();
+      setActivities(await data?.json())
+    }
+    fetchTechniques();
+    fetchActivities();
   }, []);
 
-  let dataToShow =
-    search !== "" && state.length !== 0
-      ? state.filter(
+  const dataToShow = [...techniques, ...activities];
+
+  let filteredData =
+    search !== "" && dataToShow.length !== 0
+      ? dataToShow.filter(
           (item: any) =>
             item.title.toLowerCase().includes(search.toLowerCase()) ||
             item.intro.toLowerCase().includes(search.toLowerCase())
         )
-      : state;
+      : dataToShow;
 
   return (
     <section className={styles.doPageContainer}>
@@ -34,15 +43,15 @@ const DoPage = () => {
         handleSearch={setSearch}
       />
       <article className={styles.cardContainer}>
-        {dataToShow.length !== 0 ? (
-          dataToShow.map((item: any) => {
+        {filteredData.length !== 0 ? (
+          filteredData.map((item: any) => {
             return (
               <PreviewCard
                 key={item.id}
                 title={item.title}
                 intro={item.intro}
-                id={item.slug}
-                resource={"techniques"}
+                id={item.slug ? item.slug : item.id}
+                resource={item.slug ? "techniques" : "activities"}
               />
             );
           })
