@@ -1,40 +1,63 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { fetchActivity } from "../../api/ActivityAPI";
 import PreviewCard from "../PreviewCard/PreviewCard";
+import { activitiesResource } from "../../api/constants";
+import { activity } from "../types";
+import useFetch from "../../api/useFetch";
+import { CircularLoader, NoticeBox } from "@dhis2/ui-core";
 
 import styles from "./Activity.module.css";
-interface activity {
+interface match {
   match: any;
 }
 
-const Activity = ({ match }: activity) => {
-  const [result, setResult]: any = useState(null);
+const Activity = ({ match }: match) => {
+  const [result, setResult] = useState<activity | undefined>(undefined);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchActivity(match.params.id);
-      setResult(await data?.json());
-    };
+  const handleResponse = (newResponse: activity) => {
+    if (newResponse && newResponse !== result) {
+      setResult(newResponse);
+    }
+  };
 
-    fetchData();
-  }, [match.params.id, match.params.path]);
+  const { isLoading, error, response } = useFetch(
+    `${activitiesResource}/${match.params.id}`
+  );
 
-  return (
-    <>
-      {result ? (
-        <article className={styles.container} key={result.id}>
-          <h1>{result.title}</h1>
-          <p>{result.intro}</p>
-          <ReactMarkdown
-            className={styles.richDescription}
-            children={result.content}
-          />
-          {result.techniques.length !== 0 ? (
-              <>
-              <h2>Techniques which can be applied</h2>
+  handleResponse(response);
+
+  if (isLoading) {
+    return (
+      <article className={styles.container}>
+        <CircularLoader />
+      </article>
+    );
+  }
+
+  if (error) {
+    return (
+      <article className={styles.container}>
+        <NoticeBox error title="Could not fetch activity">
+          Could not fetch the activity you requested. Please try again later.
+        </NoticeBox>
+      </article>
+    );
+  }
+
+  if (result) {
+    return (
+      <article className={styles.container} key={result.id}>
+        <h1>{result.title}</h1>
+        <p>{result.intro}</p>
+        <ReactMarkdown
+          className={styles.richDescription}
+          children={result.content}
+        />
+        {result.techniques?.length !== 0 ? (
+          <>
+            <h2>Techniques which can be applied</h2>
             <article className={styles.cardList}>
-              {result.techniques.map((technique: any) => {
+              {result.techniques?.map((technique: any) => {
                 return (
                   <PreviewCard
                     title={technique.title}
@@ -45,14 +68,11 @@ const Activity = ({ match }: activity) => {
                 );
               })}
             </article>
-            </>
-          ) : null}
-        </article>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </>
-  );
+          </>
+        ) : null}
+      </article>
+    );
+  }
 };
 
 export default Activity;
