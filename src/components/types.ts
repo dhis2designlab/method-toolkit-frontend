@@ -18,7 +18,7 @@ export interface technique {
   title: string;
   intro: string;
   content: string;
-  difficulty?: string;
+  difficulty: string;
   activity: string;
   time_in_minutes: boolean;
   maximum_time: number;

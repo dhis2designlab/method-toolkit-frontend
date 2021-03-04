@@ -5,6 +5,8 @@ import useFetch from "../../api/useFetch";
 import { techniquesResource } from "../../api/constants";
 import { technique, example } from "../types";
 import { CircularLoader, NoticeBox } from "@dhis2/ui-core";
+import { Link } from "react-router-dom";
+import WhatDoINeedBar from "./components/WhatDoINeedBar";
 
 import styles from "./Technique.module.css";
 
@@ -50,6 +52,12 @@ const Technique = ({ match }: match) => {
       <article className={styles.container} key={result.id}>
         <h1>{result.title}</h1>
         <p>{result.intro}</p>
+        <WhatDoINeedBar
+          difficulty={result.difficulty}
+          minimum_time={result.minimum_time}
+          maximum_time={result.maximum_time}
+          pairs_well_with={result.pairs_well_with}
+        />
         <ReactMarkdown
           className={styles.richDescription}
           children={result.content}

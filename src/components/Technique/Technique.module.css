@@ -1,16 +1,16 @@
 .container {
-    margin: 0 auto;
-    width: 100%;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .richDescription {
-    margin: 0 auto;
-    text-align: left;
-    max-width: 1024px;
+  margin: 0 auto;
+  text-align: left;
+  max-width: 1024px;
 }
 
 @media only screen and (min-width: 768px) {
-    .container {
-        max-width: 1250px;
-    }
+  .container {
+    max-width: 1250px;
+  }
 }
