@@ -1,32 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SearchField from "../SearchField/SearchField";
-import { fetchAllTechniques } from "../../api/TechniquesAPI";
-import { fetchAllActivities } from "../../api/ActivityAPI";
 import PreviewCard from "../PreviewCard/PreviewCard";
+import useFetch from "../../api/useFetch";
+import { activitiesResource, techniquesResource } from "../../api/constants";
+import { CircularLoader, NoticeBox } from "@dhis2/ui-core";
 
 import styles from "./DoPage.module.css";
+import { activity, technique } from "../types";
 
 const DoPage = () => {
-  const [search, setSearch] = useState("");
-  const [techniques, setTechniques] = useState([]);
-  const [activities, setActivities] = useState([]);
+  const [search, setSearch] = useState<string>("");
+  const [techniques, setTechniques] = useState<technique[] | undefined>(
+    undefined
+  );
+  const [activities, setActivities] = useState<activity[] | undefined>(
+    undefined
+  );
 
-  useEffect(() => {
-    const fetchTechniques = async () => {
-      const data = await fetchAllTechniques();
-      setTechniques(await data?.json());
-    };
-    const fetchActivities = async () => {
-      const data = await fetchAllActivities();
-      setActivities(await data?.json())
+  const handleTechnique = (newState: technique[]) => {
+    if (newState !== techniques) {
+      setTechniques(newState);
     }
-    fetchTechniques();
-    fetchActivities();
-  }, []);
+  };
 
-  const dataToShow = [...techniques, ...activities];
+  const handleActivities = (newState: activity[]) => {
+    if (newState !== activities) {
+      setActivities(newState);
+    }
+  };
 
-  let filteredData =
+  const {
+    isLoading: techniquesIsLoading,
+    error: techniquesError,
+    response: techniquesResponse,
+  } = useFetch(techniquesResource);
+
+  const {
+    isLoading: activitiesIsLoading,
+    error: activitiesError,
+    response: activitiesResponse,
+  } = useFetch(activitiesResource);
+
+  handleTechnique(techniquesResponse);
+  handleActivities(activitiesResponse);
+
+  const dataToShow =
+    techniques && activities
+      ? [...techniques, ...activities]
+      : techniques && !activities
+      ? techniques
+      : !techniques && activities
+      ? activities
+      : [];
+
+  const filteredData =
     search !== "" && dataToShow.length !== 0
       ? dataToShow.filter(
           (item: any) =>
@@ -42,8 +69,24 @@ const DoPage = () => {
         placeHolder={"Search for project type, technique, etc..."}
         handleSearch={setSearch}
       />
+      {techniquesError && !activitiesError ? (
+        <NoticeBox error title="Could not retrive techniques">
+          There was a problem fetching the techniques. Please try again later.
+        </NoticeBox>
+      ) : !techniquesError && activitiesError ? (
+        <NoticeBox error title="Could not retrive activities">
+          There was a problem fetching the activities. Please try again later.
+        </NoticeBox>
+      ) : techniquesError && activitiesError ? (
+        <NoticeBox error title="Could not retrive data">
+          There was a problem fetching the activities and techniques. Please try
+          again later.
+        </NoticeBox>
+      ) : null}
       <article className={styles.cardContainer}>
-        {filteredData.length !== 0 ? (
+        {activitiesIsLoading && techniquesIsLoading ? (
+          <CircularLoader />
+        ) : filteredData.length !== 0 ? (
           filteredData.map((item: any) => {
             return (
               <PreviewCard
@@ -56,7 +99,9 @@ const DoPage = () => {
             );
           })
         ) : (
-          <p>Loading...</p>
+          <NoticeBox title="No matches">
+            Could not find any activities or techniques.
+          </NoticeBox>
         )}
       </article>
     </section>
