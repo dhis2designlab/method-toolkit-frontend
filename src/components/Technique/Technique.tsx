@@ -5,7 +5,6 @@ import useFetch from "../../api/useFetch";
 import { techniquesResource } from "../../api/constants";
 import { technique, example } from "../types";
 import { CircularLoader, NoticeBox } from "@dhis2/ui-core";
-import { Link } from "react-router-dom";
 import WhatDoINeedBar from "./components/WhatDoINeedBar";
 
 import styles from "./Technique.module.css";
