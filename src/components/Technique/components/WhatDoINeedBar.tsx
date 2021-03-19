@@ -20,16 +20,16 @@ const WhatDoINeedBar = ({
   return (
     <article className={styles.whatDoINeed}>
       <article>
-        <p>Difficulty</p>
+        <p className={styles.attributeHeading}>Difficulty</p>
         {difficulty}
       </article>
       <article>
-        <p>Time</p>
+        <p className={styles.attributeHeading}>Time</p>
         {minimum_time}-{maximum_time} hours
       </article>
       {pairs_well_with?.length !== 0 ? (
         <article className={styles.pairsWellWith}>
-          <p>Pairs well with</p>
+          <p className={styles.attributeHeading}>Pairs well with</p>
           <article className={styles.techniques}>
             {pairs_well_with?.map((item) => {
               return (
