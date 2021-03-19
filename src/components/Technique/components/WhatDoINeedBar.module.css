@@ -25,6 +25,10 @@
   margin: 0 8px;
 }
 
+.attributeHeading {
+  font-weight: bold;
+}
+
 .techniques a:hover {
   color: grey;
 }
