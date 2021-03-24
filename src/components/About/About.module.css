@@ -1,0 +1,9 @@
+.container {
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.richDescription {
+  text-align: left;
+  max-width: 1024px;
+}

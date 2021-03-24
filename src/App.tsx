@@ -7,6 +7,7 @@ import Technique from "./components/Technique/Technique";
 import Activity from "./components/Activity/Activity";
 import Example from "./components/Example/Example";
 import Footer from "./components/Footer/Footer";
+import About from "./components/About/About";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/techniques/:id" component={Technique} />
           <Route path="/examples/:id" component={Example} />
           <Route path="/activities/:id" component={Activity} />
+          <Route path="/about" exact component={About} />
         </Switch>
         <Footer />
       </Router>
