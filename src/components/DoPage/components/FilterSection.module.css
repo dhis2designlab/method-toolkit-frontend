@@ -1,0 +1,12 @@
+.searchSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.singleSelect {
+    margin: 16px 0;
+
+}
