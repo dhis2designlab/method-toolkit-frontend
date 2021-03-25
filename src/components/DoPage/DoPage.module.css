@@ -15,6 +15,19 @@
     margin-top: 64px;
 }
 
+.searchSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.singleSelect {
+    margin: 16px 0;
+
+}
+
 @media only screen and (min-width: 768px) {
     .cardContainer {
         max-width: 1250px;

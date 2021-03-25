@@ -34,7 +34,6 @@ export interface technique {
 export interface activity {
   id: string;
   _id: string;
-  slug: string;
   title: string;
   intro: string;
   content: string;

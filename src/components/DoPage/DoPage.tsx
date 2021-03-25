@@ -1,12 +1,15 @@
-import React, { useState } from "react";
-import SearchField from "../SearchField/SearchField";
+import { useState } from "react";
 import PreviewCard from "../PreviewCard/PreviewCard";
 import useFetch from "../../api/useFetch";
 import { activitiesResource, techniquesResource } from "../../api/constants";
 import { CircularLoader, NoticeBox } from "@dhis2/ui-core";
+import { isTechnique } from "../../util/typeCheckingUtils";
+import { filterResourceType, filterText } from "../../util/filterUtils";
+import { activity, technique } from "../types";
+import { resourceTypes } from "../../data/enums";
+import { FilterSection } from "./components/FilterSection";
 
 import styles from "./DoPage.module.css";
-import { activity, technique } from "../types";
 
 const DoPage = () => {
   const [search, setSearch] = useState<string>("");
@@ -15,6 +18,9 @@ const DoPage = () => {
   );
   const [activities, setActivities] = useState<activity[] | undefined>(
     undefined
+  );
+  const [resourceFilter, setResourceFilter] = useState<string>(
+    resourceTypes.ALL
   );
 
   const handleTechnique = (newState: technique[]) => {
@@ -54,21 +60,23 @@ const DoPage = () => {
       : [];
 
   const filteredData =
-    search !== "" && dataToShow.length !== 0
+    search !== "" || dataToShow.length !== 0
       ? dataToShow.filter(
-          (item: any) =>
-            item.title.toLowerCase().includes(search.toLowerCase()) ||
-            item.intro.toLowerCase().includes(search.toLowerCase())
+          (item: activity | technique) =>
+            filterResourceType(resourceFilter, item) &&
+            filterText(search, item.title, item.intro)
         )
       : dataToShow;
 
   return (
     <section className={styles.doPageContainer}>
       <h1>What do you want support with?</h1>
-      <SearchField
-        placeHolder={"Search for project type, technique, etc..."}
-        handleSearch={setSearch}
+      <FilterSection
+        setSearch={setSearch}
+        setResourceFilter={setResourceFilter}
+        resourceFilter={resourceFilter}
       />
+
       {techniquesError && !activitiesError ? (
         <NoticeBox error title="Could not retrive techniques">
           There was a problem fetching the techniques. Please try again later.
@@ -93,8 +101,8 @@ const DoPage = () => {
                 key={item.id}
                 title={item.title}
                 intro={item.intro}
-                id={item.slug ? item.slug : item.id}
-                resource={item.slug ? "techniques" : "activities"}
+                id={isTechnique(item) ? item.slug : item.id}
+                resource={isTechnique(item) ? "techniques" : "activities"}
               />
             );
           })
