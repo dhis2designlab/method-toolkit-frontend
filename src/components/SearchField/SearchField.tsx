@@ -1,5 +1,4 @@
-import React from "react";
-import { Input } from "@dhis2/ui-core";
+import TextField from "@material-ui/core/TextField"
 
 import styles from "./SearchField.module.css";
 
@@ -14,11 +13,11 @@ const SearchField = ({
 }: searchField): JSX.Element => {
   return (
       <div className={styles.searchFieldContainer}>
-          <Input
+          <TextField
             onChange={function onChange(ev: any) {
-              handleSearch(ev.value.toLowerCase());
+              handleSearch(ev.target.value.toString().toLowerCase());
             }}
-            placeholder={placeHolder}
+            label={placeHolder}
             name={"searchField"}
             type={"text"}
           />

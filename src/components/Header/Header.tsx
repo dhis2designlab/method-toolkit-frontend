@@ -1,4 +1,3 @@
-import React from "react";
 import dhis2DesignLab from "../../media/dhis2_design_lab_logo.png";
 import { Link } from "react-router-dom";
 

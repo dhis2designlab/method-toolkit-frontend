@@ -1,5 +1,4 @@
-import React from "react";
-import { Card } from "@dhis2/ui-core";
+import Card from "@material-ui/core/Card";
 import { Link } from "react-router-dom";
 
 import styles from "./LandingPage.module.css";

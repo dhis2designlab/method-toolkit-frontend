@@ -2,12 +2,14 @@ import { useState } from "react";
 import PreviewCard from "../PreviewCard/PreviewCard";
 import useFetch from "../../api/useFetch";
 import { activitiesResource, techniquesResource } from "../../api/constants";
-import { CircularLoader, NoticeBox } from "@dhis2/ui-core";
 import { isTechnique } from "../../util/typeCheckingUtils";
 import { filterResourceType, filterText } from "../../util/filterUtils";
 import { activity, technique } from "../types";
 import { resourceTypes } from "../../data/enums";
 import { FilterSection } from "./components/FilterSection";
+import Alert from "@material-ui/lab/Alert";
+import AlertTitle from "@material-ui/lab/AlertTitle";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import styles from "./DoPage.module.css";
 
@@ -78,22 +80,26 @@ const DoPage = () => {
       />
 
       {techniquesError && !activitiesError ? (
-        <NoticeBox error title="Could not retrive techniques">
+        <Alert severity="error">
+          <AlertTitle>Could not retrive techniques</AlertTitle>
           There was a problem fetching the techniques. Please try again later.
-        </NoticeBox>
+        </Alert>
       ) : !techniquesError && activitiesError ? (
-        <NoticeBox error title="Could not retrive activities">
+        <Alert severity="error">
+          <AlertTitle>Could not retrive activities</AlertTitle>
           There was a problem fetching the activities. Please try again later.
-        </NoticeBox>
+        </Alert>
       ) : techniquesError && activitiesError ? (
-        <NoticeBox error title="Could not retrive data">
+        <Alert severity="error">
+          <AlertTitle>Could not retrive data</AlertTitle>
           There was a problem fetching the activities and techniques. Please try
           again later.
-        </NoticeBox>
+        </Alert>
       ) : null}
+
       <article className={styles.cardContainer}>
         {activitiesIsLoading && techniquesIsLoading ? (
-          <CircularLoader />
+          <CircularProgress />
         ) : filteredData.length !== 0 ? (
           filteredData.map((item: any) => {
             return (
@@ -107,9 +113,10 @@ const DoPage = () => {
             );
           })
         ) : (
-          <NoticeBox title="No matches">
-            Could not find any activities or techniques.
-          </NoticeBox>
+          <Alert severity="info">
+            <AlertTitle>No matches</AlertTitle>
+            Could not find anything matching your search.
+          </Alert>
         )}
       </article>
     </section>
