@@ -74,6 +74,7 @@ export const FilterSection = ({
                 {resourceTypes.TECHNIQUES}
               </option>
             </Select>
+            <p>Test this out on your phone as it will change based on what device you access it from</p>
           </FormControl>
         </article>
       </article>

@@ -9,6 +9,7 @@
 .selectContainer {
   margin: 16px 0;
   width: 100%;
+  max-width: 1026px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

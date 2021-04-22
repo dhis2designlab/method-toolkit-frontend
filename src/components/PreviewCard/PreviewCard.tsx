@@ -1,4 +1,5 @@
-import Card from "@material-ui/core/Card"
+import Card from "@material-ui/core/Card";
+import CardContent from '@material-ui/core/CardContent';
 import { Link } from "react-router-dom";
 
 import styles from "./PreviewCard.module.css";
@@ -23,8 +24,10 @@ const PreviewCard = ({ title, intro, id, resource }: previewCard) => {
     <div className={styles.container}>
     <Link to={`/${resource}/${id}`}>
       <Card className={styles.card}>
+        <CardContent>
         <h3>{title}</h3>
         <p>{previewText(intro)}</p>
+        </CardContent>
       </Card>
     </Link>
     </div>
