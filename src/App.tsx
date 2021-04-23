@@ -1,7 +1,6 @@
-import React from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
-import LandingPage from "./components/LandingPage/LandingPage";
+import Home from "./components/Home/Home";
 import DoPage from "./components/DoPage/DoPage";
 import Technique from "./components/Technique/Technique";
 import Activity from "./components/Activity/Activity";
@@ -16,7 +15,7 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route path="/" exact component={LandingPage} />
+          <Route path="/" exact component={Home} />
           <Route path="/do" component={DoPage} />
           <Route path="/techniques/:id" component={Technique} />
           <Route path="/examples/:id" component={Example} />

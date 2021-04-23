@@ -2,18 +2,17 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import PreviewCard from "../PreviewCard/PreviewCard";
 import { activitiesResource } from "../../api/constants";
-import { activity } from "../types";
+import { activity } from "../interfaces";
 import useFetch from "../../api/useFetch";
 import Alert from "@material-ui/lab/Alert";
 import AlertTitle from "@material-ui/lab/AlertTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { RouteComponentProps } from "react-router";
+import { TParams } from "../types";
 
 import styles from "./Activity.module.css";
-interface match {
-  match: any;
-}
 
-const Activity = ({ match }: match) => {
+const Activity = ({ match }: RouteComponentProps<TParams>) => {
   const [result, setResult] = useState<activity | undefined>(undefined);
 
   const handleResponse = (newResponse: activity) => {

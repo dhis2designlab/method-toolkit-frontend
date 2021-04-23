@@ -1,4 +1,4 @@
-import { technique, activity } from "../components/types";
+import { technique, activity } from "../components/interfaces";
 
 export function isTechnique(resource: activity | technique): resource is technique {
     return (resource as technique).difficulty !== undefined;
