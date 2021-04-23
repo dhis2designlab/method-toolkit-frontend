@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import PreviewCard from "../PreviewCard/PreviewCard";
 import { activitiesResource } from "../../api/constants";
 import { activity } from "../types";
 import useFetch from "../../api/useFetch";
-import { CircularLoader, NoticeBox } from "@dhis2/ui-core";
+import Alert from "@material-ui/lab/Alert";
+import AlertTitle from "@material-ui/lab/AlertTitle";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import styles from "./Activity.module.css";
 interface match {
@@ -29,7 +31,7 @@ const Activity = ({ match }: match) => {
   if (isLoading) {
     return (
       <article className={styles.container}>
-        <CircularLoader />
+        <CircularProgress />
       </article>
     );
   }
@@ -37,9 +39,10 @@ const Activity = ({ match }: match) => {
   if (error) {
     return (
       <article className={styles.container}>
-        <NoticeBox error title="Could not fetch activity">
+        <Alert severity="error">
+          <AlertTitle>Could not fetch activity</AlertTitle>
           Could not fetch the activity you requested. Please try again later.
-        </NoticeBox>
+        </Alert>
       </article>
     );
   }

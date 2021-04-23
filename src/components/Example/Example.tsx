@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import useFetch from "../../api/useFetch";
 import { example } from "../types";
 import { examplesResource } from "../../api/constants";
-import { CircularLoader, NoticeBox } from "@dhis2/ui-core";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Alert from "@material-ui/lab/Alert";
+import AlertTitle from "@material-ui/lab/AlertTitle";
 
 import styles from "./Example.module.css";
 
@@ -29,7 +31,7 @@ const Example = ({ match }: match) => {
   if (isLoading) {
     return (
       <article className={styles.container}>
-        <CircularLoader />
+        <CircularProgress />
       </article>
     );
   }
@@ -37,9 +39,10 @@ const Example = ({ match }: match) => {
   if (error) {
     return (
       <article className={styles.container}>
-        <NoticeBox error title="Could not fetch example">
+        <Alert severity="error">
+          <AlertTitle>Could not fetch example</AlertTitle>
           Could not fetch the example you requested. Please try again later.
-        </NoticeBox>
+        </Alert>
       </article>
     );
   }

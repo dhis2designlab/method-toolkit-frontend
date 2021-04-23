@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import PreviewCard from "../PreviewCard/PreviewCard";
 import useFetch from "../../api/useFetch";
 import { techniquesResource } from "../../api/constants";
 import { technique, example } from "../types";
-import { CircularLoader, NoticeBox } from "@dhis2/ui-core";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import WhatDoINeedBar from "./components/WhatDoINeedBar";
+import Alert from "@material-ui/lab/Alert";
+import AlertTitle from "@material-ui/lab/AlertTitle";
 
 import styles from "./Technique.module.css";
 
@@ -31,7 +33,7 @@ const Technique = ({ match }: match) => {
   if (isLoading) {
     return (
       <article className={styles.container}>
-        <CircularLoader />;
+        <CircularProgress />;
       </article>
     );
   }
@@ -39,9 +41,10 @@ const Technique = ({ match }: match) => {
   if (error) {
     return (
       <article className={styles.container}>
-        <NoticeBox error title="Could not fetch technique">
+        <Alert severity="error">
+          <AlertTitle>Could not fetch technique</AlertTitle>
           We could not fetch the technique you requested. Please try again.
-        </NoticeBox>
+        </Alert>
       </article>
     );
   }
@@ -64,17 +67,19 @@ const Technique = ({ match }: match) => {
         {result.examples?.length !== 0 ? (
           <article>
             <h2>Examples</h2>
-            {result.examples?.map((example: example) => {
-              return (
-                <PreviewCard
-                  title={example.title}
-                  intro={example.intro}
-                  resource={"examples"}
-                  id={example.id}
-                  key={example.id}
-                />
-              );
-            })}
+            <article className={styles.center}>
+              {result.examples?.map((example: example) => {
+                return (
+                  <PreviewCard
+                    title={example.title}
+                    intro={example.intro}
+                    resource={"examples"}
+                    id={example.id}
+                    key={example.id}
+                  />
+                );
+              })}
+            </article>
           </article>
         ) : null}
       </article>
