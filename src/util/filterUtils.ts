@@ -1,5 +1,5 @@
 import { technique, activity } from "../components/interfaces";
-import { resourceTypes } from "../data/enums";
+import { resourceTypes } from "../components/enums";
 import { isActivity, isTechnique } from "./typeCheckingUtils";
 
 export const filterText = (

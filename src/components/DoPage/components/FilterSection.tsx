@@ -1,4 +1,4 @@
-import { resourceTypes } from "../../../data/enums";
+import { resourceTypes } from "../../enums";
 import SearchField from "../../SearchField/SearchField";
 
 import Select from "@material-ui/core/Select";

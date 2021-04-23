@@ -5,7 +5,7 @@ import { activitiesResource, techniquesResource } from "../../api/constants";
 import { isTechnique } from "../../util/typeCheckingUtils";
 import { filterResourceType, filterText } from "../../util/filterUtils";
 import { activity, technique } from "../interfaces";
-import { resourceTypes } from "../../data/enums";
+import { resourceTypes } from "../enums";
 import { FilterSection } from "./components/FilterSection";
 import Alert from "@material-ui/lab/Alert";
 import AlertTitle from "@material-ui/lab/AlertTitle";
