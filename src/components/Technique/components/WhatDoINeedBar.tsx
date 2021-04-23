@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { technique } from "../../types";
+import { technique } from "../../interfaces";
 import { techniquesResource } from "../../../api/constants";
 
 import styles from "./WhatDoINeedBar.module.css";

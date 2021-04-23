@@ -1,19 +1,17 @@
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import useFetch from "../../api/useFetch";
-import { example } from "../types";
+import { example } from "../interfaces";
 import { examplesResource } from "../../api/constants";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Alert from "@material-ui/lab/Alert";
 import AlertTitle from "@material-ui/lab/AlertTitle";
+import { RouteComponentProps } from "react-router";
+import { TParams } from "../types";
 
 import styles from "./Example.module.css";
 
-interface match {
-  match: any;
-}
-
-const Example = ({ match }: match) => {
+const Example = ({ match }: RouteComponentProps<TParams>) => {
   const [result, setResult] = useState<example | undefined>(undefined);
 
   const handleResponse = (newResponse: example) => {

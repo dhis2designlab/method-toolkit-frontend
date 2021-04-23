@@ -1,4 +1,4 @@
-import { technique, activity } from "../components/types";
+import { technique, activity } from "../components/interfaces";
 import { resourceTypes } from "../data/enums";
 import { isActivity, isTechnique } from "./typeCheckingUtils";
 

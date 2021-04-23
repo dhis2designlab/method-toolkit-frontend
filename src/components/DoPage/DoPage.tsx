@@ -4,7 +4,7 @@ import useFetch from "../../api/useFetch";
 import { activitiesResource, techniquesResource } from "../../api/constants";
 import { isTechnique } from "../../util/typeCheckingUtils";
 import { filterResourceType, filterText } from "../../util/filterUtils";
-import { activity, technique } from "../types";
+import { activity, technique } from "../interfaces";
 import { resourceTypes } from "../../data/enums";
 import { FilterSection } from "./components/FilterSection";
 import Alert from "@material-ui/lab/Alert";
