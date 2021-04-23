@@ -1,9 +1,9 @@
 import Card from "@material-ui/core/Card";
 import { Link } from "react-router-dom";
 
-import styles from "./LandingPage.module.css";
+import styles from "./Home.module.css";
 
-const LandingPage = (): JSX.Element => {
+const Home = (): JSX.Element => {
   return (
     <section className={styles.landingContainer}>
       <h1>DHIS2 user-oriented design and innovation toolkit</h1>
@@ -28,4 +28,4 @@ const LandingPage = (): JSX.Element => {
   );
 };
 
-export default LandingPage;
+export default Home;
