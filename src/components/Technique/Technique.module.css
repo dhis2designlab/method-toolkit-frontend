@@ -3,10 +3,9 @@
   padding: 0 16px;
 }
 
-.richDescription {
-  text-align: left;
-  max-width: 1024px;
-  flex-shrink: 2;
+.title {
+  border-bottom: 2px solid black;
+  padding-bottom: 8px;
 }
 
 .center {
@@ -20,13 +19,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding-top: 16px;
 }
 
 .contentRight {
   flex-direction: column;
   border-left: none;
   flex-shrink: 1;
+}
+
+.contentLeft {
+  text-align: left;
+  max-width: 1024px;
+  flex-shrink: 2;
 }
 
 @media only screen and (min-width: 768px) {
@@ -38,12 +42,12 @@
     max-width: 1250px;
   }
 
-  .richDescription {
-    padding-right: 16px;
-  }
-
   .contentDivider {
     flex-direction: row;
+  }
+
+  .contentLeft {
+    padding-right: 16px;
   }
 
   .contentRight {

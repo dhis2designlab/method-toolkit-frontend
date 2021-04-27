@@ -51,19 +51,17 @@ const Technique = ({ match }: RouteComponentProps<TParams>) => {
     return (
       <article className={styles.container} key={result.id}>
         <h1 className={styles.title}>{result.title}</h1>
-        <p>{result.intro}</p>
-        <WhatDoINeedBar
-          difficulty={result.difficulty}
-          minimum_time={result.minimum_time}
-          maximum_time={result.maximum_time}
-          pairs_well_with={result.pairs_well_with}
-        />
-        <article className={styles.contentDivider}>
-          <article>
-            <ReactMarkdown
-              className={styles.richDescription}
-              children={result.content}
+        <div className={styles.contentDivider}>
+          <article className={styles.contentLeft}>
+            <WhatDoINeedBar
+              difficulty={result.difficulty}
+              minimum_time={result.minimum_time}
+              maximum_time={result.maximum_time}
+              pairs_well_with={result.pairs_well_with}
             />
+            <h2>What</h2>
+            <p>{result.intro}</p>
+            <ReactMarkdown children={result.content} />
           </article>
           {result.examples?.length !== 0 ? (
             <article className={styles.contentRight}>
@@ -83,7 +81,7 @@ const Technique = ({ match }: RouteComponentProps<TParams>) => {
               </article>
             </article>
           ) : null}
-        </article>
+        </div>
       </article>
     );
   }
