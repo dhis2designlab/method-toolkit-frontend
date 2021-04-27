@@ -6,6 +6,7 @@
 .richDescription {
   text-align: left;
   max-width: 1024px;
+  flex-shrink: 2;
 }
 
 .center {
@@ -15,8 +16,38 @@
   justify-content: center;
 }
 
+.contentDivider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 16px;
+}
+
+.contentRight {
+  flex-direction: column;
+  border-left: none;
+  flex-shrink: 1;
+}
+
 @media only screen and (min-width: 768px) {
+  .title {
+    text-align: left;
+  }
+
   .container {
     max-width: 1250px;
+  }
+
+  .richDescription {
+    padding-right: 16px;
+  }
+
+  .contentDivider {
+    flex-direction: row;
+  }
+
+  .contentRight {
+    padding-left: 16px;
+    border-left: 2px solid black;
   }
 }

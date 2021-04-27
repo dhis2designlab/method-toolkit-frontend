@@ -50,7 +50,7 @@ const Technique = ({ match }: RouteComponentProps<TParams>) => {
   if (result) {
     return (
       <article className={styles.container} key={result.id}>
-        <h1>{result.title}</h1>
+        <h1 className={styles.title}>{result.title}</h1>
         <p>{result.intro}</p>
         <WhatDoINeedBar
           difficulty={result.difficulty}
@@ -58,28 +58,32 @@ const Technique = ({ match }: RouteComponentProps<TParams>) => {
           maximum_time={result.maximum_time}
           pairs_well_with={result.pairs_well_with}
         />
-        <ReactMarkdown
-          className={styles.richDescription}
-          children={result.content}
-        />
-        {result.examples?.length !== 0 ? (
+        <article className={styles.contentDivider}>
           <article>
-            <h2>Examples</h2>
-            <article className={styles.center}>
-              {result.examples?.map((example: example) => {
-                return (
-                  <PreviewCard
-                    title={example.title}
-                    intro={example.intro}
-                    resource={"examples"}
-                    id={example.id}
-                    key={example.id}
-                  />
-                );
-              })}
-            </article>
+            <ReactMarkdown
+              className={styles.richDescription}
+              children={result.content}
+            />
           </article>
-        ) : null}
+          {result.examples?.length !== 0 ? (
+            <article className={styles.contentRight}>
+              <h2>Examples from other DHIS2 projects</h2>
+              <article className={styles.center}>
+                {result.examples?.map((example: example) => {
+                  return (
+                    <PreviewCard
+                      title={example.title}
+                      intro={example.intro}
+                      resource={"examples"}
+                      id={example.id}
+                      key={example.id}
+                    />
+                  );
+                })}
+              </article>
+            </article>
+          ) : null}
+        </article>
       </article>
     );
   }
