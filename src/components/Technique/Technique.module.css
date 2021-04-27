@@ -3,9 +3,9 @@
   padding: 0 16px;
 }
 
-.richDescription {
-  text-align: left;
-  max-width: 1024px;
+.title {
+  border-bottom: 2px solid black;
+  padding-bottom: 8px;
 }
 
 .center {
@@ -15,8 +15,43 @@
   justify-content: center;
 }
 
+.contentDivider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.contentRight {
+  flex-direction: column;
+  border-left: none;
+  flex-shrink: 1;
+}
+
+.contentLeft {
+  text-align: left;
+  max-width: 1024px;
+  flex-shrink: 2;
+}
+
 @media only screen and (min-width: 768px) {
+  .title {
+    text-align: left;
+  }
+
   .container {
     max-width: 1250px;
+  }
+
+  .contentDivider {
+    flex-direction: row;
+  }
+
+  .contentLeft {
+    padding-right: 16px;
+  }
+
+  .contentRight {
+    padding-left: 16px;
+    border-left: 2px solid black;
   }
 }

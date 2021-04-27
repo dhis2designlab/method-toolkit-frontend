@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { technique } from "../../interfaces";
 import { techniquesResource } from "../../../api/constants";
+import BarChartIcon from "@material-ui/icons/BarChart";
+import TimerIcon from "@material-ui/icons/Timer";
+import AmpStoriesIcon from "@material-ui/icons/AmpStories";
 
 import styles from "./WhatDoINeedBar.module.css";
 
@@ -20,16 +23,25 @@ const WhatDoINeedBar = ({
   return (
     <article className={styles.whatDoINeed}>
       <article>
-        <p className={styles.attributeHeading}>Difficulty</p>
+        <div className={styles.iconOnLine}>
+          <BarChartIcon />
+          <p className={styles.attributeHeading}>Difficulty</p>
+        </div>
         {difficulty}
       </article>
       <article>
-        <p className={styles.attributeHeading}>Time</p>
+        <div className={styles.iconOnLine}>
+          <TimerIcon />
+          <p className={styles.attributeHeading}>Time</p>
+        </div>
         {minimum_time}-{maximum_time} hours
       </article>
       {pairs_well_with?.length !== 0 ? (
         <article className={styles.pairsWellWith}>
-          <p className={styles.attributeHeading}>Pairs well with</p>
+          <div className={styles.iconOnLine}>
+            <AmpStoriesIcon />
+            <p className={styles.attributeHeading}>Pairs well with</p>
+          </div>
           <article className={styles.techniques}>
             {pairs_well_with?.map((item) => {
               return (
