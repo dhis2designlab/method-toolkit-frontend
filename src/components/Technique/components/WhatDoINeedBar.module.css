@@ -25,8 +25,16 @@
   margin: 0 8px;
 }
 
+.iconOnLine {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .attributeHeading {
   font-weight: bold;
+  padding-left: 8px;
 }
 
 .techniques a:hover {
