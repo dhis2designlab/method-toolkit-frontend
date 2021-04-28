@@ -10,7 +10,7 @@ import styles from "./FilterSection.module.css";
 interface filterSection {
   setSearch: Function;
   handleResourceFilter(event: React.ChangeEvent<HTMLInputElement>): void;
-  resourceFilter: resourceFilters
+  resourceFilter: resourceFilters;
 }
 
 export const FilterSection = ({

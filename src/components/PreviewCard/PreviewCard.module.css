@@ -1,26 +1,25 @@
-
 .container a {
-    color: #000;
-    text-decoration: none;
+  color: #000;
+  text-decoration: none;
 }
 
 .card {
-    margin: 8px 0;
-    max-width: 256px;
-    width: 100%;
-    cursor: pointer;
+  margin: 8px 0;
+  max-width: 256px;
+  width: 100%;
+  cursor: pointer;
 }
 
 .card h3 {
-    text-align: center;
+  text-align: center;
 }
 
 .card p {
-    text-align: left;
+  text-align: left;
 }
 
 @media only screen and (min-width: 768px) {
-    .card {
-        max-width: 300px;
-    }
+  .card {
+    max-width: 300px;
+  }
 }

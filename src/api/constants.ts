@@ -6,4 +6,4 @@ export const techniquesResource: string = "/techniques";
 
 export const activitiesResource: string = "/activities";
 
-export const aboutPageResource: string = "/about-page"
+export const aboutPageResource: string = "/about-page";

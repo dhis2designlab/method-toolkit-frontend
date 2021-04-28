@@ -26,8 +26,13 @@ const DoPage = () => {
     undefined
   );
 
-  const handleResourceFilters = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setResourceFilters({ ...resourceFilters, [event.target.name]: event.target.checked });
+  const handleResourceFilters = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setResourceFilters({
+      ...resourceFilters,
+      [event.target.name]: event.target.checked,
+    });
   };
 
   const handleTechnique = (newState: technique[]) => {
