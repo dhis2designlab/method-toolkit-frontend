@@ -1,11 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import PreviewCard from "../PreviewCard/PreviewCard";
 import useFetch from "../../api/useFetch";
 import { activitiesResource, techniquesResource } from "../../api/constants";
 import { isTechnique } from "../../util/typeCheckingUtils";
-import { filterResourceType, filterText } from "../../util/filterUtils";
+import { filterText, filterResources } from "../../util/filterUtils";
 import { activity, technique } from "../interfaces";
-import { resourceTypes } from "../enums";
 import { FilterSection } from "./components/FilterSection";
 import Alert from "@material-ui/lab/Alert";
 import AlertTitle from "@material-ui/lab/AlertTitle";
@@ -15,15 +14,21 @@ import styles from "./DoPage.module.css";
 
 const DoPage = () => {
   const [search, setSearch] = useState<string>("");
+  const [resourceFilters, setResourceFilters] = useState({
+    showActivities: true,
+    showTechniques: true,
+  });
+
   const [techniques, setTechniques] = useState<technique[] | undefined>(
     undefined
   );
   const [activities, setActivities] = useState<activity[] | undefined>(
     undefined
   );
-  const [resourceFilter, setResourceFilter] = useState<string>(
-    resourceTypes.ALL
-  );
+
+  const handleResourceFilters = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setResourceFilters({ ...resourceFilters, [event.target.name]: event.target.checked });
+  };
 
   const handleTechnique = (newState: technique[]) => {
     if (newState !== techniques) {
@@ -65,7 +70,7 @@ const DoPage = () => {
     search !== "" || dataToShow.length !== 0
       ? dataToShow.filter(
           (item: activity | technique) =>
-            filterResourceType(resourceFilter, item) &&
+            filterResources(item, resourceFilters) &&
             filterText(search, item.title, item.intro)
         )
       : dataToShow;
@@ -73,10 +78,11 @@ const DoPage = () => {
   return (
     <section className={styles.doPageContainer}>
       <h1>What do you want support with?</h1>
+
       <FilterSection
         setSearch={setSearch}
-        setResourceFilter={setResourceFilter}
-        resourceFilter={resourceFilter}
+        handleResourceFilter={handleResourceFilters}
+        resourceFilter={resourceFilters}
       />
 
       {techniquesError && !activitiesError ? (

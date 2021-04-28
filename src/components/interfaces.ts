@@ -46,3 +46,8 @@ export interface activity {
   activities?: Array<activity>;
   __v: number;
 }
+
+export interface resourceFilters {
+  showActivities: boolean;
+  showTechniques: boolean;
+}

@@ -1,5 +1,4 @@
-import { technique, activity } from "../components/interfaces";
-import { resourceTypes } from "../components/enums";
+import { technique, activity, resourceFilters } from "../components/interfaces";
 import { isActivity, isTechnique } from "./typeCheckingUtils";
 
 export const filterText = (
@@ -13,18 +12,11 @@ export const filterText = (
   );
 };
 
-// Checks the resource type to, if none of the enums match
-// we assume it's set to ALL
-export const filterResourceType = (
-  filterState: string,
-  item: activity | technique
+export const filterResources = (
+  item: activity | technique,
+  filters: resourceFilters
 ): boolean => {
-  switch (filterState) {
-    case resourceTypes.TECHNIQUES:
-      return isTechnique(item);
-    case resourceTypes.ACTIVITIES:
-      return isActivity(item);
-    default:
-      return true;
-  }
+  if (filters.showActivities && isActivity(item)) return true;
+  if (filters.showTechniques && isTechnique(item)) return true;
+  return false;
 };
