@@ -1,82 +1,52 @@
+import React from "react";
 import { resourceTypes } from "../../enums";
 import SearchField from "../../SearchField/SearchField";
-
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
+import { resourceFilters } from "../../interfaces";
 
 import styles from "./FilterSection.module.css";
-import React from "react";
-
 interface filterSection {
   setSearch: Function;
-  setResourceFilter: Function;
-  resourceFilter: string;
+  handleResourceFilter(event: React.ChangeEvent<HTMLInputElement>): void;
+  resourceFilter: resourceFilters
 }
-
-// TODO: Delete one of the fields after lab has tested
 
 export const FilterSection = ({
   setSearch,
   resourceFilter,
-  setResourceFilter,
+  handleResourceFilter: setResourceFilter,
 }: filterSection) => {
   return (
     <article className={styles.searchSection}>
       <article className={styles.selectContainer}>
-        <article>
-          <h3>SimpleSelect</h3>
-          <FormControl className={styles.select}>
-            <InputLabel id={"do-resource-selector"}>
-              What do You want to see?
-            </InputLabel>
-            <Select
-              labelId={"do-resource-selector"}
-              value={resourceFilter}
-              onChange={function onChange(
-                event: React.ChangeEvent<{ name?: string; value: unknown }>
-              ) {
-                setResourceFilter(event.target.value);
-              }}
-            >
-              <MenuItem value={resourceTypes.ALL}>{resourceTypes.ALL}</MenuItem>
-              <MenuItem value={resourceTypes.ACTIVITIES}>
-                {resourceTypes.ACTIVITIES}
-              </MenuItem>
-              <MenuItem value={resourceTypes.TECHNIQUES}>
-                {resourceTypes.TECHNIQUES}
-              </MenuItem>
-            </Select>
-          </FormControl>
-        </article>
-        <article>
-          <h3>NativeSelect</h3>
-          <FormControl className={styles.select}>
-            <InputLabel id={"do-resource-selector"}>
-              What do You want to see?
-            </InputLabel>
-            <Select
-              labelId={"do-resource-selector"}
-              value={resourceFilter}
-              native
-              onChange={function onChange(
-                event: React.ChangeEvent<{ name?: string; value: unknown }>
-              ) {
-                setResourceFilter(event.target.value);
-              }}
-            >
-              <option value={resourceTypes.ALL}>{resourceTypes.ALL}</option>
-              <option value={resourceTypes.ACTIVITIES}>
-                {resourceTypes.ACTIVITIES}
-              </option>
-              <option value={resourceTypes.TECHNIQUES}>
-                {resourceTypes.TECHNIQUES}
-              </option>
-            </Select>
-            <p>Test this out on your phone as it will change based on what device you access it from</p>
-          </FormControl>
-        </article>
+        <FormGroup row>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={resourceFilter.showActivities}
+                onChange={setResourceFilter}
+                name="showActivities"
+                inputProps={{ "aria-label": "primary checkbox" }}
+                color="primary"
+              />
+            }
+            label={resourceTypes.ACTIVITIES}
+          />
+          <FormControlLabel
+            control={
+              <Switch
+                checked={resourceFilter.showTechniques}
+                onChange={setResourceFilter}
+                name="showTechniques"
+                inputProps={{ "aria-label": "primary checkbox" }}
+                color="primary"
+              />
+            }
+            label={resourceTypes.TECHNIQUES}
+          />
+        </FormGroup>
       </article>
       <SearchField placeHolder={"Search field"} handleSearch={setSearch} />
     </article>
