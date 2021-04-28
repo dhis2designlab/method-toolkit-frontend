@@ -1,36 +1,35 @@
 .doPageContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
 }
 
 .cardContainer {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    flex-direction: column;
-    margin-top: 64px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: column;
+  margin-top: 64px;
 }
 
 .searchSection {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .singleSelect {
-    margin: 16px 0;
-
+  margin: 16px 0;
 }
 
 @media only screen and (min-width: 768px) {
-    .cardContainer {
-        max-width: 1250px;
-        flex-direction: row;
-    }
+  .cardContainer {
+    max-width: 1250px;
+    flex-direction: row;
+  }
 }

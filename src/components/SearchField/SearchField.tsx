@@ -1,4 +1,4 @@
-import TextField from "@material-ui/core/TextField"
+import TextField from "@material-ui/core/TextField";
 
 import styles from "./SearchField.module.css";
 
@@ -12,16 +12,16 @@ const SearchField = ({
   placeHolder,
 }: searchField): JSX.Element => {
   return (
-      <div className={styles.searchFieldContainer}>
-          <TextField
-            onChange={function onChange(ev: any) {
-              handleSearch(ev.target.value.toString().toLowerCase());
-            }}
-            label={placeHolder}
-            name={"searchField"}
-            type={"text"}
-          />
-      </div>
+    <div className={styles.searchFieldContainer}>
+      <TextField
+        onChange={function onChange(ev: any) {
+          handleSearch(ev.target.value.toString().toLowerCase());
+        }}
+        label={placeHolder}
+        name={"searchField"}
+        type={"text"}
+      />
+    </div>
   );
 };
 
