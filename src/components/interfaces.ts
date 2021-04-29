@@ -21,6 +21,8 @@ export interface technique {
   difficulty: string;
   activity: string;
   time_in_minutes: boolean;
+  phase: string;
+  materials: string;
   maximum_time: number;
   minimum_time: number;
   createdAt: Date;
