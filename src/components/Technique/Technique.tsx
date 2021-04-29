@@ -31,7 +31,7 @@ const Technique = ({ match }: RouteComponentProps<TParams>) => {
   if (isLoading) {
     return (
       <article className={styles.container}>
-        <CircularProgress />;
+        <CircularProgress />
       </article>
     );
   }
@@ -55,8 +55,10 @@ const Technique = ({ match }: RouteComponentProps<TParams>) => {
           <article className={styles.contentLeft}>
             <WhatDoINeedBar
               difficulty={result.difficulty}
+              phase={result.phase}
               minimum_time={result.minimum_time}
               maximum_time={result.maximum_time}
+              materials={result.materials}
               pairs_well_with={result.pairs_well_with}
             />
             <h2>What</h2>
