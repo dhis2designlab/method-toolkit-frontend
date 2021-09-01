@@ -1,7 +1,7 @@
-import dhis2DesignLab from "../../media/dhis2_design_lab_logo.png";
-import { Link } from "react-router-dom";
+import dhis2DesignLab from "../../media/dhis2_design_lab_logo.png"
+import { Link } from "react-router-dom"
 
-import styles from "./Header.module.css";
+import styles from "./Header.module.css"
 
 const Header = (): JSX.Element => {
   return (
@@ -28,7 +28,7 @@ const Header = (): JSX.Element => {
         </Link>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

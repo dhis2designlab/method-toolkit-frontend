@@ -1,21 +1,21 @@
-import { Link } from "react-router-dom";
-import { technique } from "../../interfaces";
-import { techniquesResource } from "../../../api/constants";
-import BarChartIcon from "@material-ui/icons/BarChart";
-import TimerIcon from "@material-ui/icons/Timer";
-import AmpStoriesIcon from "@material-ui/icons/AmpStories";
-import AllInclusive from "@material-ui/icons/AllInclusive";
-import CreateIcon from "@material-ui/icons/Create";
+import { Link } from "react-router-dom"
+import { technique } from "../../interfaces"
+import { techniquesResource } from "../../../api/constants"
+import BarChartIcon from "@material-ui/icons/BarChart"
+import TimerIcon from "@material-ui/icons/Timer"
+import AmpStoriesIcon from "@material-ui/icons/AmpStories"
+import AllInclusive from "@material-ui/icons/AllInclusive"
+import CreateIcon from "@material-ui/icons/Create"
 
-import styles from "./WhatDoINeedBar.module.css";
+import styles from "./WhatDoINeedBar.module.css"
 
 interface whatDoIneed {
-  difficulty: string;
-  phase?: string;
-  materials?: string;
-  minimum_time: number;
-  maximum_time: number;
-  pairs_well_with?: technique[];
+  difficulty: string
+  phase?: string
+  materials?: string
+  minimum_time: number
+  maximum_time: number
+  pairs_well_with?: technique[]
 }
 
 const WhatDoINeedBar = ({
@@ -70,13 +70,13 @@ const WhatDoINeedBar = ({
                 <Link to={`${techniquesResource}/${item.slug}`}>
                   {item.title}
                 </Link>
-              );
+              )
             })}
           </article>
         </article>
       ) : null}
     </article>
-  );
-};
+  )
+}
 
-export default WhatDoINeedBar;
+export default WhatDoINeedBar

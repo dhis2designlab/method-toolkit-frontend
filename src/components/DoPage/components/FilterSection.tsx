@@ -1,16 +1,16 @@
-import React from "react";
-import { resourceTypes } from "../../enums";
-import SearchField from "../../SearchField/SearchField";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Switch from "@material-ui/core/Switch";
-import { resourceFilters } from "../../interfaces";
+import React from "react"
+import { resourceTypes } from "../../enums"
+import SearchField from "../../SearchField/SearchField"
+import FormGroup from "@material-ui/core/FormGroup"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import Switch from "@material-ui/core/Switch"
+import { resourceFilters } from "../../interfaces"
 
-import styles from "./FilterSection.module.css";
+import styles from "./FilterSection.module.css"
 interface filterSection {
-  setSearch: Function;
-  handleResourceFilter(event: React.ChangeEvent<HTMLInputElement>): void;
-  resourceFilter: resourceFilters;
+  setSearch: Function
+  handleResourceFilter(event: React.ChangeEvent<HTMLInputElement>): void
+  resourceFilter: resourceFilters
 }
 
 export const FilterSection = ({
@@ -50,5 +50,5 @@ export const FilterSection = ({
       </article>
       <SearchField placeHolder={"Search field"} handleSearch={setSearch} />
     </article>
-  );
-};
+  )
+}

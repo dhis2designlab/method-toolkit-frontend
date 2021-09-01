@@ -1,7 +1,7 @@
-import Card from "@material-ui/core/Card";
-import { Link } from "react-router-dom";
+import Card from "@material-ui/core/Card"
+import { Link } from "react-router-dom"
 
-import styles from "./Home.module.css";
+import styles from "./Home.module.css"
 
 const Home = (): JSX.Element => {
   return (
@@ -25,7 +25,7 @@ const Home = (): JSX.Element => {
         </Link>
       </article>
     </section>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
