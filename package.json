@@ -24,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --check './src/**/*.{(t|j)s,(t|j)sx}'",
+    "prettier:write": "prettier --write './src/**/*.{(t|j)s,(t|j)sx}'" 
   },
   "eslintConfig": {
     "extends": [

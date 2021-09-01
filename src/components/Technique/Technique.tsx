@@ -1,39 +1,39 @@
-import { useState } from "react";
-import ReactMarkdown from "react-markdown";
-import PreviewCard from "../PreviewCard/PreviewCard";
-import useFetch from "../../api/useFetch";
-import { techniquesResource } from "../../api/constants";
-import { technique, example } from "../interfaces";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import WhatDoINeedBar from "./components/WhatDoINeedBar";
-import Alert from "@material-ui/lab/Alert";
-import AlertTitle from "@material-ui/lab/AlertTitle";
-import { RouteComponentProps } from "react-router";
-import { TParams } from "../types";
+import { useState } from "react"
+import ReactMarkdown from "react-markdown"
+import PreviewCard from "../PreviewCard/PreviewCard"
+import useFetch from "../../api/useFetch"
+import { techniquesResource } from "../../api/constants"
+import { technique, example } from "../interfaces"
+import CircularProgress from "@material-ui/core/CircularProgress"
+import WhatDoINeedBar from "./components/WhatDoINeedBar"
+import Alert from "@material-ui/lab/Alert"
+import AlertTitle from "@material-ui/lab/AlertTitle"
+import { RouteComponentProps } from "react-router"
+import { TParams } from "../types"
 
-import styles from "./Technique.module.css";
+import styles from "./Technique.module.css"
 
 const Technique = ({ match }: RouteComponentProps<TParams>) => {
-  const [result, setResult] = useState<technique | undefined>(undefined);
+  const [result, setResult] = useState<technique | undefined>(undefined)
 
   const handleResult = (newResult: technique[]) => {
     if (newResult && newResult[0] !== result) {
-      setResult(newResult[0]);
+      setResult(newResult[0])
     }
-  };
+  }
 
   const { isLoading, error, response } = useFetch(
     `${techniquesResource}?slug=${match.params.id}`
-  );
+  )
 
-  handleResult(response);
+  handleResult(response)
 
   if (isLoading) {
     return (
       <article className={styles.container}>
         <CircularProgress />
       </article>
-    );
+    )
   }
 
   if (error) {
@@ -44,7 +44,7 @@ const Technique = ({ match }: RouteComponentProps<TParams>) => {
           We could not fetch the technique you requested. Please try again.
         </Alert>
       </article>
-    );
+    )
   }
 
   if (result) {
@@ -78,15 +78,15 @@ const Technique = ({ match }: RouteComponentProps<TParams>) => {
                       id={example.id}
                       key={example.id}
                     />
-                  );
+                  )
                 })}
               </article>
             </article>
           ) : null}
         </div>
       </article>
-    );
+    )
   }
-};
+}
 
-export default Technique;
+export default Technique

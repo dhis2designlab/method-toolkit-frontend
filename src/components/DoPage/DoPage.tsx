@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import PreviewCard from "../PreviewCard/PreviewCard";
-import useFetch from "../../api/useFetch";
-import { activitiesResource, techniquesResource } from "../../api/constants";
-import { isTechnique } from "../../util/typeCheckingUtils";
-import { filterText, filterResources } from "../../util/filterUtils";
-import { activity, technique } from "../interfaces";
-import { FilterSection } from "./components/FilterSection";
-import Alert from "@material-ui/lab/Alert";
-import AlertTitle from "@material-ui/lab/AlertTitle";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import React, { useState } from "react"
+import PreviewCard from "../PreviewCard/PreviewCard"
+import useFetch from "../../api/useFetch"
+import { activitiesResource, techniquesResource } from "../../api/constants"
+import { isTechnique } from "../../util/typeCheckingUtils"
+import { filterText, filterResources } from "../../util/filterUtils"
+import { activity, technique } from "../interfaces"
+import { FilterSection } from "./components/FilterSection"
+import Alert from "@material-ui/lab/Alert"
+import AlertTitle from "@material-ui/lab/AlertTitle"
+import CircularProgress from "@material-ui/core/CircularProgress"
 
-import styles from "./DoPage.module.css";
+import styles from "./DoPage.module.css"
 
 const DoPage = () => {
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>("")
   const [resourceFilters, setResourceFilters] = useState({
     showActivities: true,
     showTechniques: true,
-  });
+  })
 
   const [techniques, setTechniques] = useState<technique[] | undefined>(
     undefined
-  );
+  )
   const [activities, setActivities] = useState<activity[] | undefined>(
     undefined
-  );
+  )
 
   const handleResourceFilters = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -32,35 +32,35 @@ const DoPage = () => {
     setResourceFilters({
       ...resourceFilters,
       [event.target.name]: event.target.checked,
-    });
-  };
+    })
+  }
 
   const handleTechnique = (newState: technique[]) => {
     if (newState !== techniques) {
-      setTechniques(newState);
+      setTechniques(newState)
     }
-  };
+  }
 
   const handleActivities = (newState: activity[]) => {
     if (newState !== activities) {
-      setActivities(newState);
+      setActivities(newState)
     }
-  };
+  }
 
   const {
     isLoading: techniquesIsLoading,
     error: techniquesError,
     response: techniquesResponse,
-  } = useFetch(techniquesResource);
+  } = useFetch(techniquesResource)
 
   const {
     isLoading: activitiesIsLoading,
     error: activitiesError,
     response: activitiesResponse,
-  } = useFetch(activitiesResource);
+  } = useFetch(activitiesResource)
 
-  handleTechnique(techniquesResponse);
-  handleActivities(activitiesResponse);
+  handleTechnique(techniquesResponse)
+  handleActivities(activitiesResponse)
 
   const dataToShow =
     techniques && activities
@@ -69,7 +69,7 @@ const DoPage = () => {
       ? techniques
       : !techniques && activities
       ? activities
-      : [];
+      : []
 
   const filteredData =
     search !== "" || dataToShow.length !== 0
@@ -78,7 +78,7 @@ const DoPage = () => {
             filterResources(item, resourceFilters) &&
             filterText(search, item.title, item.intro)
         )
-      : dataToShow;
+      : dataToShow
 
   return (
     <section className={styles.doPageContainer}>
@@ -121,7 +121,7 @@ const DoPage = () => {
                 id={isTechnique(item) ? item.slug : item.id}
                 resource={isTechnique(item) ? "techniques" : "activities"}
               />
-            );
+            )
           })
         ) : (
           <Alert severity="info">
@@ -131,7 +131,7 @@ const DoPage = () => {
         )}
       </article>
     </section>
-  );
-};
+  )
+}
 
-export default DoPage;
+export default DoPage

@@ -1,3 +1,3 @@
 export type TParams = {
-  id: string;
-};
+  id: string
+}
