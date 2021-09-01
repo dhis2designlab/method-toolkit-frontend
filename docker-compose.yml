@@ -1,12 +1,16 @@
 version: "3.8"
 services: 
-  app:
+  method-toolkit-frontend-dev:
     build:
       context: .
+      dockerfile: Dockerfile
     volumes: 
-      - .:/method-toolkit-frontend
+      - ".:/method-toolkit-frontend"
+      - "method-toolkit-frontend/node_modules"
     ports:
       - 3000:3000
-    image: app:react
-    container_name: react_container
+    image: method-toolkit-frontend:react
+    environment:
+      - NODE_ENV=development
+    container_name: method_toolkit_frontend_dev_container
     command: yarn start
