@@ -28,7 +28,7 @@ RUN yarn build
 
 # set up production environment
 # the base image for this is an alpine based nginx image
-FROM nginx:alpine
+FROM nginx:stable-alpine
 
 # copy the build folder from react to the root of nginx (www)
 COPY --from=build /method-toolkit-frontend/build /usr/share/nginx/html

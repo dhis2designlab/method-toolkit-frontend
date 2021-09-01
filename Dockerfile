@@ -4,7 +4,7 @@ WORKDIR /method-toolkit-frontend
 COPY package.json /method-toolkit-frontend/package.json
 COPY yarn.lock /method-toolkit-frontend/yarn.lock
 
-ENV PATH /app/node_modules/.bin:$PATH
+ENV PATH /method-toolkit-frontend/node_modules/.bin:$PATH
 
 COPY . .
 RUN yarn build
