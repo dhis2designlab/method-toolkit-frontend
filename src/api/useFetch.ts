@@ -20,7 +20,7 @@ const useFetch = (resource: string) => {
         handleErrors(res)
         const json = await res.json()
         setResponse(json)
-      } catch (error) {
+      } catch (error: any) {
         setError(error)
       } finally {
         setIsLoading(false)
