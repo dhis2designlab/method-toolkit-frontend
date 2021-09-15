@@ -5,7 +5,10 @@ const useFetch = (resource: string) => {
   const [response, setResponse] = useState<any>(undefined)
   const [error, setError] = useState<Error | undefined>(undefined)
 
-  const baseURL: string = "https://method-toolkit-backend.herokuapp.com"
+  const getBaseUrl = () => {
+    if (process.env.NODE_ENV === "production") return process.env.STRAPI_URL
+    else return "https://localhost:1337"
+  }
 
   const handleErrors = (res: Response) => {
     if (!res.ok) {
@@ -15,6 +18,7 @@ const useFetch = (resource: string) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const baseURL = getBaseUrl()
       try {
         const res = await fetch(`${baseURL}${resource}`)
         handleErrors(res)
