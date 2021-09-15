@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     volumes: 
       - ".:/method-toolkit-frontend"
-      - "method-toolkit-frontend/node_modules"
+      - "/method-toolkit-frontend/node_modules"
     ports:
       - 3000:3000
     image: method-toolkit-frontend:react
