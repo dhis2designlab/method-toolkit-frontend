@@ -20,9 +20,9 @@ const Home = (): JSX.Element => {
   if (isLoading) return <CircularProgress />
   if (error)
     return (
-      <ErrorMessage 
-      title={"Could not fetch the home page"}
-      description={"Could not fetch the home page. Please try again later."}
+      <ErrorMessage
+        title={"Could not fetch the home page"}
+        description={"Could not fetch the home page. Please try again later."}
       />
     )
 
@@ -42,9 +42,11 @@ const Home = (): JSX.Element => {
         {userStoryIsLoading ? (
           <CircularProgress />
         ) : userStoryError ? (
-          <ErrorMessage 
-          title={"Could not fetch user stories"}
-          description={"Could not fetch the user stories. Please try again later."}
+          <ErrorMessage
+            title={"Could not fetch user stories"}
+            description={
+              "Could not fetch the user stories. Please try again later."
+            }
           />
         ) : (
           <div className={styles.cardRow}>
