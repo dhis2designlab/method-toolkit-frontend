@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react"
+import { getStrapiUrl } from "./getStrapiUrl"
 
 const useFetch = (resource: string) => {
   const [isLoading, setIsLoading] = useState(true)
   const [response, setResponse] = useState<any>(undefined)
   const [error, setError] = useState<Error | undefined>(undefined)
-
-  const getBaseUrl = () => {
-    if (process.env.NODE_ENV === "production") return process.env.STRAPI_URL
-    else return "https://localhost:1337"
-  }
 
   const handleErrors = (res: Response) => {
     if (!res.ok) {
@@ -18,9 +14,9 @@ const useFetch = (resource: string) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const baseURL = getBaseUrl()
+      const strapiUrl = getStrapiUrl()
       try {
-        const res = await fetch(`${baseURL}${resource}`)
+        const res = await fetch(`${strapiUrl}${resource}`)
         handleErrors(res)
         const json = await res.json()
         setResponse(json)
