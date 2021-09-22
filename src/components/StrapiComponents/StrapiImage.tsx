@@ -5,7 +5,10 @@ interface StrapiImageInterface {
   width: number
 }
 
-export const StrapiImage = ({ image, width }: StrapiImageInterface): JSX.Element => {
+export const StrapiImage = ({
+  image,
+  width,
+}: StrapiImageInterface): JSX.Element => {
   const strapiUrl = getStrapiUrl()
   console.log(image.image)
   return (
