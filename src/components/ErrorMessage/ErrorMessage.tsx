@@ -1,7 +1,7 @@
 import { Alert, AlertTitle } from "@material-ui/lab"
 import styles from "./ErrorMessage.module.css"
 
-interface ErrorMessage {
+interface ErrorMessageInterface {
   title: string
   description: string
 }
@@ -9,7 +9,7 @@ interface ErrorMessage {
 export const ErrorMessage = ({
   title,
   description,
-}: ErrorMessage): JSX.Element => {
+}: ErrorMessageInterface): JSX.Element => {
   return (
     <div className={styles.errorMessage}>
       <Alert severity="error">
