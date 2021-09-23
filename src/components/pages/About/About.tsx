@@ -1,6 +1,6 @@
-import useFetch from "../../api/useFetch"
+import useFetch from "../../../api/useFetch"
 import ReactMarkdown from "react-markdown"
-import { aboutPageResource } from "../../api/constants"
+import { aboutPageResource } from "../../../api/constants"
 import Alert from "@material-ui/lab/Alert"
 import AlertTitle from "@material-ui/lab/AlertTitle"
 import CircularProgress from "@material-ui/core/CircularProgress"

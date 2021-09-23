@@ -1,13 +1,13 @@
 import CircularProgress from "@material-ui/core/CircularProgress"
 import ReactMarkdown from "react-markdown"
-import useFetch from "../../api/useFetch"
-import { StrapiImage } from "../StrapiComponents/StrapiImage"
-import { examplesResource } from "../../api/constants"
+import useFetch from "../../../api/useFetch"
+import { StrapiImage } from "../../StrapiComponents/StrapiImage"
+import { examplesResource } from "../../../api/constants"
 
 import styles from "./Home.module.css"
-import { example } from "../interfaces"
-import PreviewCard from "../PreviewCard/PreviewCard"
-import { ErrorMessage } from "../ErrorMessage/ErrorMessage"
+import { example } from "../../interfaces"
+import PreviewCard from "../../PreviewCard/PreviewCard"
+import { ErrorMessage } from "../../ErrorMessage/ErrorMessage"
 
 const Home = (): JSX.Element => {
   const { isLoading, response, error } = useFetch("/home-page")

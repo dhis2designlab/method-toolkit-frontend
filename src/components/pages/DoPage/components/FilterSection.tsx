@@ -1,10 +1,10 @@
 import React from "react"
-import { resourceTypes } from "../../enums"
-import SearchField from "../../SearchField/SearchField"
+import { resourceTypes } from "../../../enums"
+import SearchField from "../../../SearchField/SearchField"
 import FormGroup from "@material-ui/core/FormGroup"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Switch from "@material-ui/core/Switch"
-import { resourceFilters } from "../../interfaces"
+import { resourceFilters } from "../../../interfaces"
 
 import styles from "./FilterSection.module.css"
 interface filterSection {
