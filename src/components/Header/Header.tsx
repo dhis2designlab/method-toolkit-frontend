@@ -14,14 +14,11 @@ const Header = (): JSX.Element => {
             alt={"DHIS2 Design Lab"}
           />
         </Link>
+        <Link to="/activities">
+          <li>Activities</li>
+        </Link>
         <Link to="/do">
           <li>Do</li>
-        </Link>
-        <Link to="/plan">
-          <li>Plan</li>
-        </Link>
-        <Link to="/learn">
-          <li>Learn</li>
         </Link>
         <Link className={styles.about} to="/about">
           <li>About</li>
