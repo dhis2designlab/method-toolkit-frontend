@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { getStrapiUrl } from "./getStrapiUrl"
 
 const useFetch = (resource: string) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -14,9 +13,8 @@ const useFetch = (resource: string) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const strapiUrl = getStrapiUrl()
       try {
-        const res = await fetch(`${strapiUrl}${resource}`)
+        const res = await fetch(`${process.env.REACT_APP_STRAPI_URL}${resource}`)
         handleErrors(res)
         const json = await res.json()
         setResponse(json)
