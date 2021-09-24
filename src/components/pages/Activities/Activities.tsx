@@ -4,6 +4,7 @@ import { ErrorMessage } from "../../ErrorMessage/ErrorMessage";
 
 import commonStyles from "../commonStyles.module.css"
 import SearchBar from "../../SearchBar/SearchBar";
+import { CoverCard } from "../../CoverCard/CoverCard";
 
 export const Activities = (): JSX.Element => {
 
@@ -23,6 +24,13 @@ export const Activities = (): JSX.Element => {
             </div>
 
             <SearchBar />
+
+            <div style={{display: "flex", justifyContent: "space-around", flexDirection: "column"}}>
+                <CoverCard title={"Interview"} cardContent={"something about this"} />
+                <CoverCard title={"Interview"} cardContent={"something about this"} />
+                <CoverCard title={"Interview"} cardContent={"something about this"} />
+
+            </div>
 
         </section>
     )
