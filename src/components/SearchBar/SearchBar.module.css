@@ -3,12 +3,13 @@
     flex-direction: column;
     justify-content: flex-start;
     padding: 24px;
+    max-width: 300px;
 }
 
 .searchBarMiddleRow {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
+    flex-direction: column;
 }
 
 #searchField {
@@ -20,6 +21,10 @@
 @media only screen and (min-width: 768px) {
     .searchField {
         max-width: 600px;
+    }
+
+    .searchBarMiddleRow {
+        flex-direction: row;
     }
   }
 
