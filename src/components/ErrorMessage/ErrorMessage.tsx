@@ -10,9 +10,9 @@ export const ErrorMessage = ({
   title,
   description,
 }: ErrorMessageInterface): JSX.Element => {
-
   const genericTitle = "Failed while fetching"
-  const genericDescription = "Could not fetch the content for the page. Please try again later."
+  const genericDescription =
+    "Could not fetch the content for the page. Please try again later."
 
   return (
     <div className={styles.errorMessage}>
