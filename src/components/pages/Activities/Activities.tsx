@@ -1,37 +1,78 @@
-import { usePage } from "../../../hooks/usePage";
-import { CircularProgress } from "@material-ui/core";
-import { ErrorMessage } from "../../ErrorMessage/ErrorMessage";
+import { useState } from "react"
+import { usePage } from "../../../hooks/usePage"
+import { CircularProgress } from "@material-ui/core"
+import { ErrorMessage } from "../../ErrorMessage/ErrorMessage"
 
 import commonStyles from "../commonStyles.module.css"
-import SearchBar from "../../SearchBar/SearchBar";
-import { CoverCard } from "../../CoverCard/CoverCard";
+import SearchBar from "../../SearchBar/SearchBar"
+import { CoverCard } from "../../CoverCard/CoverCard"
+import { useActivities } from "../../../hooks/useActivities"
 
 export const Activities = (): JSX.Element => {
+  const ACTIVITIES_QUERYKEY = "activities-page"
 
-    const ACTIVITIES_QUERYKEY = "activities-page"
+  const [textSearch, setTextSearch] = useState<string>("")
+  const handleTextSearch = (newValue: string) => {
+    setTextSearch(newValue)
+  }
 
-    const { isLoading, error, data } = usePage(ACTIVITIES_QUERYKEY, `/${ACTIVITIES_QUERYKEY}`)
+  const { isLoading, error, data } = usePage(
+    ACTIVITIES_QUERYKEY,
+    `/${ACTIVITIES_QUERYKEY}`
+  )
+  const {
+    isLoading: activitiesIsLoading,
+    data: activitiesData,
+    error: activitiesError,
+  } = useActivities()
 
-    if (isLoading) return <CircularProgress />
+  const filteredActivities =
+    textSearch !== ""
+      ? activitiesData.filter(
+          (activity: any) =>
+            activity.title.toLowerCase().includes(textSearch) ||
+            activity.cover.short_description.toLowerCase().includes(textSearch)
+        )
+      : activitiesData
 
-    if (error) return <ErrorMessage />
+  if (isLoading) return <CircularProgress />
 
-    return (
-        <section className={commonStyles.pageContainer}>
-            <div className={commonStyles.pageHeader}>
-                <h1>{data.Title}</h1>
-                <p>{data.Description}</p>
-            </div>
+  if (error) return <ErrorMessage />
 
-            <SearchBar />
+  return (
+    <section className={commonStyles.pageContainer}>
+      <div className={commonStyles.pageHeader}>
+        <h1>{data.Title}</h1>
+        <p>{data.Description}</p>
+      </div>
 
-            <div style={{display: "flex", justifyContent: "space-around", flexDirection: "column"}}>
-                <CoverCard title={"Interview"} cardContent={"something about this"} />
-                <CoverCard title={"Interview"} cardContent={"something about this"} />
-                <CoverCard title={"Interview"} cardContent={"something about this"} />
+      <SearchBar
+        placeholderForTextField="Search for activities!"
+        handleTextChange={handleTextSearch}
+      />
 
-            </div>
-
-        </section>
-    )
+      {activitiesIsLoading ? (
+        <CircularProgress />
+      ) : activitiesError ? (
+        <ErrorMessage
+          title={"Could not fetch activities"}
+          description="We had some problems fetching the activities for you. Please try again later."
+        />
+      ) : (
+        <div className={commonStyles.cardList}>
+          {filteredActivities.map((activity: any) => {
+            return (
+              <CoverCard
+                key={activity.id}
+                id={activity.id}
+                resource="activities"
+                title={activity.title}
+                cardContent={activity.cover.short_description}
+              />
+            )
+          })}
+        </div>
+      )}
+    </section>
+  )
 }

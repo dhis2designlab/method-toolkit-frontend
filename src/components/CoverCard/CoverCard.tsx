@@ -1,19 +1,30 @@
 import { Button, Card } from "@material-ui/core"
 import styles from "./CoverCard.module.css"
+import { Link } from "react-router-dom"
 
 interface CoverCardProps {
-    title: string,
-    cardContent: string,
-    coverImageUrl?: string,
-    slug?: string
+  id: string
+  resource: string
+  title: string
+  cardContent: string
+  coverImageUrl?: string
+  slug?: string
 }
 
-export const CoverCard = ({ title, cardContent, coverImageUrl }: CoverCardProps) => {
-    return (
-        <Card className={styles.cardContainer}>
-            <h3>{title}</h3>
-            <p>{cardContent}</p>
-            <Button variant="outlined">Read more</Button>
-        </Card>
-    )
+export const CoverCard = ({
+  id,
+  resource,
+  title,
+  cardContent,
+  coverImageUrl,
+}: CoverCardProps) => {
+  return (
+    <Card className={styles.cardContainer}>
+      <h3>{title}</h3>
+      <p>{cardContent}</p>
+      <Link id={styles.cardButton} to={`/${resource}/${id}`}>
+        <Button variant="outlined">Read more</Button>
+      </Link>
+    </Card>
+  )
 }
