@@ -17,12 +17,13 @@ export const CoverCard = ({
   title,
   cardContent,
   coverImageUrl,
+  slug
 }: CoverCardProps) => {
   return (
     <Card className={styles.cardContainer}>
       <h3>{title}</h3>
       <p>{cardContent}</p>
-      <Link id={styles.cardButton} to={`/${resource}/${id}`}>
+      <Link id={styles.cardButton} to={`/${resource}/${slug ?? id}`}>
         <Button variant="outlined">Read more</Button>
       </Link>
     </Card>

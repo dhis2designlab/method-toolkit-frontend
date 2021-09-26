@@ -17,6 +17,9 @@ const Header = (): JSX.Element => {
         <Link to="/activities">
           <li>Activities</li>
         </Link>
+        <Link to="/methods">
+          <li>Methods</li>
+        </Link>
         <Link to="/do">
           <li>Do</li>
         </Link>
