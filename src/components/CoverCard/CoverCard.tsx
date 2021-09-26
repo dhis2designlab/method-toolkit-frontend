@@ -17,7 +17,7 @@ export const CoverCard = ({
   title,
   cardContent,
   coverImageUrl,
-  slug
+  slug,
 }: CoverCardProps) => {
   return (
     <Card className={styles.cardContainer}>
