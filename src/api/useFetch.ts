@@ -14,7 +14,9 @@ const useFetch = (resource: string) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`${process.env.REACT_APP_STRAPI_URL}${resource}`)
+        const res = await fetch(
+          `${process.env.REACT_APP_STRAPI_URL}${resource}`
+        )
         handleErrors(res)
         const json = await res.json()
         setResponse(json)

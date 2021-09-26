@@ -1,10 +1,5 @@
 import { useState } from "react"
-import {
-  Button,
-  Card,
-  InputAdornment,
-  TextField,
-} from "@material-ui/core"
+import { Button, Card, InputAdornment, TextField } from "@material-ui/core"
 import SearchIcon from "@material-ui/icons/Search"
 import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown"
 import KeyboardArrowUp from "@material-ui/icons/KeyboardArrowUp"
@@ -26,10 +21,7 @@ interface search {
   duration?: filterProps
 }
 
-const SearchBar = ({
-  placeholderForTextField,
-  handleTextChange
-}: search) => {
+const SearchBar = ({ placeholderForTextField, handleTextChange }: search) => {
   const [expanded, setExpanded] = useState<boolean>(false)
 
   return (
@@ -41,7 +33,7 @@ const SearchBar = ({
           placeholder={placeholderForTextField ?? undefined}
           variant="outlined"
           size="small"
-          onChange={e => handleTextChange(e.target.value)}
+          onChange={(e) => handleTextChange(e.target.value)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
