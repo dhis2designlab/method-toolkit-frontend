@@ -9,6 +9,7 @@ import Footer from "./components/Footer/Footer"
 import About from "./components/pages/About/About"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { Activities } from "./components/pages/Activities/Activities"
+import { Methods } from "./components/pages/Methods/Methods"
 import { QueryClient, QueryClientProvider } from "react-query"
 
 const queryClient = new QueryClient()
@@ -22,9 +23,10 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/do" component={DoPage} />
-            <Route path="/activities" exact component={Activities} />
-            <Route path="/techniques/:id" component={Technique} />
+            <Route path="/methods" exact component={Methods} />
+            <Route path="/methods/:id" component={Technique} />
             <Route path="/examples/:id" component={Example} />
+            <Route path="/activities" exact component={Activities} />
             <Route path="/activities/:id" component={Activity} />
             <Route path="/about" exact component={About} />
           </Switch>
