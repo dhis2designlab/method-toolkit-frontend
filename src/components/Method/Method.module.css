@@ -1,0 +1,23 @@
+.mainContent {
+  max-width: 850px;
+  text-align: left;
+}
+
+.contentDivider {
+  max-width: 1250px;
+  padding: 16px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+@media only screen and (min-width: 768px) {
+  .methodHeader > img {
+    display: block;
+  }
+
+  .contentDivider {
+    flex-direction: row;
+  }
+}

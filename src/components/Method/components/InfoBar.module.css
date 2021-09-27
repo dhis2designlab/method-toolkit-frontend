@@ -1,0 +1,43 @@
+.infoBar {
+  display: flex;
+  text-align: left;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+#infoBarHeading {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+.pairsWellWith {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.pairsWellWith > a {
+  color: black;
+  text-decoration: none;
+  height: min-content;
+  margin: 0 8px 0 0;
+}
+
+.pairsWellWith a:hover {
+    color: grey;
+  }
+
+@media only screen and (min-width: 768px) {
+  .infoBar {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 200px;
+  }
+
+  #infoBarHeading {
+    flex-basis: 0;
+  }
+}
