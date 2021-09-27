@@ -1,0 +1,30 @@
+.methodHeaderContainer {
+    width: 100%;
+    background-color: #396B9B;
+    color: #FFFFFF;
+    text-align: left;
+  }
+  
+  .methodHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1250px;
+    padding: 16px;
+  }
+  
+  .methodHeader > img {
+    display: none;
+  }
+  
+  .methodHeaderText {
+    max-width: 700px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .methodHeader > img {
+      display: block;
+    }
+  }
+  
