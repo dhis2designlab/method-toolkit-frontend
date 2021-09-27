@@ -2,7 +2,7 @@ import "./App.css"
 import Header from "./components/Header/Header"
 import Home from "./components/pages/Home/Home"
 import DoPage from "./components/pages/DoPage/DoPage"
-import Technique from "./components/Method/Method"
+import Method from "./components/Method/Method"
 import Activity from "./components/Activity/Activity"
 import Example from "./components/Example/Example"
 import Footer from "./components/Footer/Footer"
@@ -24,7 +24,7 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/do" component={DoPage} />
             <Route path="/methods" exact component={Methods} />
-            <Route path="/methods/:id" component={Technique} />
+            <Route path="/methods/:id" component={Method} />
             <Route path="/examples/:id" component={Example} />
             <Route path="/activities" exact component={Activities} />
             <Route path="/activities/:id" component={Activity} />
