@@ -35,6 +35,7 @@ const Method = ({ match }: RouteComponentProps<TParams>) => {
       <MethodHeader
         title={data[0].title}
         description={data[0].header.header_description}
+        image={data[0].header.header_image}
       />
       <div className={styles.contentDivider}>
         {data[0].stats ? (
