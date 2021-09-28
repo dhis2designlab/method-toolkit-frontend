@@ -2,11 +2,10 @@ import { useState } from "react"
 import { usePage } from "../../../hooks/usePage"
 import { CircularProgress } from "@material-ui/core"
 import { ErrorMessage } from "../../ErrorMessage/ErrorMessage"
-
-import commonStyles from "../commonStyles.module.css"
 import SearchBar from "../../SearchBar/SearchBar"
-import { CoverCard } from "../../CoverCard/CoverCard"
 import { useActivities } from "../../../hooks/useActivities"
+import { CoverCardList } from "../../CoverCardList/CoverCardList"
+import commonStyles from "../commonStyles.module.css"
 
 export const Activities = (): JSX.Element => {
   const ACTIVITIES_QUERYKEY = "activities-page"
@@ -60,17 +59,10 @@ export const Activities = (): JSX.Element => {
         />
       ) : (
         <div className={commonStyles.cardList}>
-          {filteredActivities.map((activity: any) => {
-            return (
-              <CoverCard
-                key={activity.id}
-                id={activity.id}
-                resource="activities"
-                title={activity.title}
-                cardContent={activity.cover.short_description}
-              />
-            )
-          })}
+          <CoverCardList
+            cardList={filteredActivities}
+            resource={"activities"}
+          />
         </div>
       )}
     </section>
