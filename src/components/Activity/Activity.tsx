@@ -36,9 +36,11 @@ const Activity = ({ match }: RouteComponentProps<TParams>) => {
         <p>{data.description}</p>
       </div>
       <article className={styles.mainContent}>
-        {data.dynamic_zone ? data.dynamic_zone.map((component: any) => {
-          return <DynamicZoneMapper component={component} />
-        }): null}
+        {data.dynamic_zone
+          ? data.dynamic_zone.map((component: any) => {
+              return <DynamicZoneMapper component={component} />
+            })
+          : null}
       </article>
       {data.activities.length !== 0 ? (
         <>
@@ -49,7 +51,7 @@ const Activity = ({ match }: RouteComponentProps<TParams>) => {
       {data.methods.length !== 0 ? (
         <>
           <h3>Methods included in this activity</h3>
-            <CoverCardList cardList={data.methods} resource={"methods"} />
+          <CoverCardList cardList={data.methods} resource={"methods"} />
         </>
       ) : null}
     </article>
