@@ -2,11 +2,10 @@ import { useState } from "react"
 import { usePage } from "../../../hooks/usePage"
 import { CircularProgress } from "@material-ui/core"
 import { ErrorMessage } from "../../ErrorMessage/ErrorMessage"
-
-import commonStyles from "../commonStyles.module.css"
 import SearchBar from "../../SearchBar/SearchBar"
-import { CoverCard } from "../../CoverCard/CoverCard"
 import { useMethods } from "../../../hooks/useMethods"
+import { CoverCardList } from "../../CoverCardList/CoverCardList"
+import commonStyles from "../commonStyles.module.css"
 
 export const Methods = (): JSX.Element => {
   const METHODS_QUERYKEY = "methods-page"
@@ -61,18 +60,7 @@ export const Methods = (): JSX.Element => {
         />
       ) : (
         <div className={commonStyles.cardList}>
-          {filteredMethods.map((methods: any) => {
-            return (
-              <CoverCard
-                key={methods.id}
-                id={methods.id}
-                resource="methods"
-                title={methods.title}
-                slug={methods.slug}
-                cardContent={methods.cover.short_description}
-              />
-            )
-          })}
+          <CoverCardList cardList={filteredMethods} resource={"methods"} />
         </div>
       )}
     </section>

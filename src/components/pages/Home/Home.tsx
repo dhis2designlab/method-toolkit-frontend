@@ -1,21 +1,20 @@
 import CircularProgress from "@material-ui/core/CircularProgress"
 import ReactMarkdown from "react-markdown"
-import useFetch from "../../../api/useFetch"
 import { StrapiImage } from "../../StrapiComponents/StrapiImage"
-import { examplesResource } from "../../../api/constants"
-
 import styles from "./Home.module.css"
-import { example } from "../../interfaces"
-import PreviewCard from "../../PreviewCard/PreviewCard"
 import { ErrorMessage } from "../../ErrorMessage/ErrorMessage"
+import { usePage } from "../../../hooks/usePage"
+import { useUserStories } from "../../../hooks/useUserStories"
+import { CoverCardList } from "../../CoverCardList/CoverCardList"
 
 const Home = (): JSX.Element => {
-  const { isLoading, response, error } = useFetch("/home-page")
+  const HOME_PAGE = "home-page"
+  const { isLoading, data, error } = usePage(HOME_PAGE, `/${HOME_PAGE}`)
   const {
     isLoading: userStoryIsLoading,
-    response: userStoryResponse,
+    data: userStoryData,
     error: userStoryError,
-  } = useFetch(`${examplesResource}?_sort=updatedAt:DESC&_limit=3`)
+  } = useUserStories("?_sort=updatedAt:DESC&_limit=3")
 
   if (isLoading) return <CircularProgress />
   if (error)
@@ -30,15 +29,15 @@ const Home = (): JSX.Element => {
     <section className={styles.homeContainer}>
       <div id={styles.introductionSection}>
         <div style={{ maxWidth: 500 }}>
-          <h1>{response.header}</h1>
-          <ReactMarkdown>{response.header_description}</ReactMarkdown>
+          <h1>{data.header}</h1>
+          <ReactMarkdown>{data.header_description}</ReactMarkdown>
         </div>
-        <StrapiImage image={response.header_illustration} width={400} />
+        <StrapiImage image={data.header_illustration} width={400} />
       </div>
 
       <section id={styles.userStories}>
-        <h1>{response.user_stories_header}</h1>
-        <ReactMarkdown>{response.user_stories_description}</ReactMarkdown>
+        <h2>{data.user_stories_header}</h2>
+        <ReactMarkdown>{data.user_stories_description}</ReactMarkdown>
         {userStoryIsLoading ? (
           <CircularProgress />
         ) : userStoryError ? (
@@ -50,16 +49,7 @@ const Home = (): JSX.Element => {
           />
         ) : (
           <div className={styles.cardRow}>
-            {userStoryResponse.map((userStory: example) => {
-              return (
-                <PreviewCard
-                  title={userStory.title}
-                  intro={userStory.intro}
-                  resource={"examples"}
-                  id={userStory.id}
-                />
-              )
-            })}
+            <CoverCardList cardList={userStoryData} resource={"examples"} />
           </div>
         )}
       </section>
