@@ -10,13 +10,13 @@ export const StrapiImage = ({
   width,
 }: StrapiImageInterface): JSX.Element => {
   const strapiUrl = getStrapiUrl()
-  console.log(image.image)
   return (
     <img
       src={`${strapiUrl}${image.url}`}
       alt={image.alternativeText}
       style={{
-        width: width,
+        maxWidth: width,
+        width: "100%",
         height: "auto",
       }}
     ></img>
