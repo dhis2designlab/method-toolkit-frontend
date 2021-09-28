@@ -20,9 +20,6 @@ const Header = (): JSX.Element => {
         <Link to="/methods">
           <li>Methods</li>
         </Link>
-        <Link to="/do">
-          <li>Do</li>
-        </Link>
         <Link className={styles.about} to="/about">
           <li>About</li>
         </Link>
