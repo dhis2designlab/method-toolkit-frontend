@@ -1,12 +1,12 @@
 import { useQuery } from "react-query"
 import { ACTIVITIES } from "./constants"
 
-export const useActivities = () => {
+export const useActivity = (id: string) => {
   return useQuery(
-    ACTIVITIES,
+    [ACTIVITIES, id],
     async () =>
       await fetch(
-        `${process.env.REACT_APP_STRAPI_URL}/${ACTIVITIES}`
+        `${process.env.REACT_APP_STRAPI_URL}/${ACTIVITIES}/${id}`
       ).then((res) => res.json())
   )
 }

@@ -1,31 +1,14 @@
-import { useState } from "react"
-import ReactMarkdown from "react-markdown"
-import PreviewCard from "../PreviewCard/PreviewCard"
-import { activitiesResource } from "../../api/constants"
-import { activity } from "../interfaces"
-import useFetch from "../../api/useFetch"
-import Alert from "@material-ui/lab/Alert"
-import AlertTitle from "@material-ui/lab/AlertTitle"
 import CircularProgress from "@material-ui/core/CircularProgress"
 import { RouteComponentProps } from "react-router"
 import { TParams } from "../types"
-
+import { useActivity } from "../../hooks/useActivity"
+import { ErrorMessage } from "../ErrorMessage/ErrorMessage"
+import { DynamicZoneMapper } from "../StrapiComponents/DynamicZoneMapper"
+import { CoverCardList } from "../CoverCardList/CoverCardList"
 import styles from "./Activity.module.css"
 
 const Activity = ({ match }: RouteComponentProps<TParams>) => {
-  const [result, setResult] = useState<activity | undefined>(undefined)
-
-  const handleResponse = (newResponse: activity) => {
-    if (newResponse && newResponse !== result) {
-      setResult(newResponse)
-    }
-  }
-
-  const { isLoading, error, response } = useFetch(
-    `${activitiesResource}/${match.params.id}`
-  )
-
-  handleResponse(response)
+  const { isLoading, error, data } = useActivity(match.params.id)
 
   if (isLoading) {
     return (
@@ -37,44 +20,42 @@ const Activity = ({ match }: RouteComponentProps<TParams>) => {
 
   if (error) {
     return (
-      <article className={styles.container}>
-        <Alert severity="error">
-          <AlertTitle>Could not fetch activity</AlertTitle>
-          Could not fetch the activity you requested. Please try again later.
-        </Alert>
-      </article>
+      <ErrorMessage
+        title={"Could not fetch activity"}
+        description={
+          "Could not fetch the activity you requested. Please try again later."
+        }
+      />
     )
   }
 
-  if (result) {
-    return (
-      <article className={styles.container} key={result.id}>
-        <h1>{result.title}</h1>
-        <p>{result.intro}</p>
-        <ReactMarkdown
-          className={styles.richDescription}
-          children={result.content}
-        />
-        {result.techniques?.length !== 0 ? (
-          <>
-            <h2>Techniques which can be applied</h2>
-            <article className={styles.cardList}>
-              {result.techniques?.map((technique: any) => {
-                return (
-                  <PreviewCard
-                    title={technique.title}
-                    intro={technique.intro}
-                    resource={"techniques"}
-                    id={technique.slug}
-                  />
-                )
-              })}
-            </article>
-          </>
-        ) : null}
+  return (
+    <article className={styles.container} key={data.id}>
+      <div className={styles.pageHeader}>
+        <h1>{data.title}</h1>
+        <p>{data.description}</p>
+      </div>
+      <article className={styles.mainContent}>
+        {data.dynamic_zone
+          ? data.dynamic_zone.map((component: any) => {
+              return <DynamicZoneMapper component={component} />
+            })
+          : null}
       </article>
-    )
-  }
+      {data.activities.length !== 0 ? (
+        <>
+          <h3>Activities linked to {data.title}</h3>
+          <CoverCardList cardList={data.activities} resource={"activities"} />
+        </>
+      ) : null}
+      {data.methods.length !== 0 ? (
+        <>
+          <h3>Methods included in this activity</h3>
+          <CoverCardList cardList={data.methods} resource={"methods"} />
+        </>
+      ) : null}
+    </article>
+  )
 }
 
 export default Activity
