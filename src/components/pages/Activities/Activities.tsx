@@ -60,10 +60,7 @@ export const Activities = (): JSX.Element => {
         />
       ) : (
         <div className={commonStyles.cardList}>
-          <CoverCardList
-            cardList={filteredActivities}
-            resource={ACTIVITIES}
-          />
+          <CoverCardList cardList={filteredActivities} resource={ACTIVITIES} />
         </div>
       )}
     </section>
