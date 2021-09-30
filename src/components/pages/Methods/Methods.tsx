@@ -6,6 +6,7 @@ import SearchBar from "../../SearchBar/SearchBar"
 import { useMethods } from "../../../hooks/useMethods"
 import { CoverCardList } from "../../CoverCardList/CoverCardList"
 import commonStyles from "../commonStyles.module.css"
+import { METHODS } from "../../../constants"
 
 export const Methods = (): JSX.Element => {
   const METHODS_QUERYKEY = "methods-page"
@@ -60,7 +61,7 @@ export const Methods = (): JSX.Element => {
         />
       ) : (
         <div className={commonStyles.cardList}>
-          <CoverCardList cardList={filteredMethods} resource={"methods"} />
+          <CoverCardList cardList={filteredMethods} resource={METHODS} />
         </div>
       )}
     </section>

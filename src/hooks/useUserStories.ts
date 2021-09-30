@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { USER_STORIES } from "./constants"
+import { USER_STORIES } from "../constants"
 
 export const useUserStories = (urlParams?: string) => {
   return useQuery(
