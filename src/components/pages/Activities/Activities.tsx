@@ -6,6 +6,7 @@ import SearchBar from "../../SearchBar/SearchBar"
 import { useActivities } from "../../../hooks/useActivities"
 import { CoverCardList } from "../../CoverCardList/CoverCardList"
 import commonStyles from "../commonStyles.module.css"
+import { ACTIVITIES } from "../../../constants"
 
 export const Activities = (): JSX.Element => {
   const ACTIVITIES_QUERYKEY = "activities-page"
@@ -59,10 +60,7 @@ export const Activities = (): JSX.Element => {
         />
       ) : (
         <div className={commonStyles.cardList}>
-          <CoverCardList
-            cardList={filteredActivities}
-            resource={"activities"}
-          />
+          <CoverCardList cardList={filteredActivities} resource={ACTIVITIES} />
         </div>
       )}
     </section>

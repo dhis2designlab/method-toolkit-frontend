@@ -6,6 +6,7 @@ import { ErrorMessage } from "../../ErrorMessage/ErrorMessage"
 import { usePage } from "../../../hooks/usePage"
 import { useUserStories } from "../../../hooks/useUserStories"
 import { CoverCardList } from "../../CoverCardList/CoverCardList"
+import { USER_STORIES } from "../../../constants"
 
 const Home = (): JSX.Element => {
   const HOME_PAGE = "home-page"
@@ -49,7 +50,7 @@ const Home = (): JSX.Element => {
           />
         ) : (
           <div className={styles.cardRow}>
-            <CoverCardList cardList={userStoryData} resource={"examples"} />
+            <CoverCardList cardList={userStoryData} resource={USER_STORIES} />
           </div>
         )}
       </section>

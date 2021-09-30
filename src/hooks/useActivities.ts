@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { ACTIVITIES } from "./constants"
+import { ACTIVITIES } from "../constants"
 
 export const useActivities = () => {
   return useQuery(

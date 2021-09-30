@@ -6,6 +6,7 @@ import { ErrorMessage } from "../ErrorMessage/ErrorMessage"
 import { DynamicZoneMapper } from "../StrapiComponents/DynamicZoneMapper"
 import { CoverCardList } from "../CoverCardList/CoverCardList"
 import styles from "./Activity.module.css"
+import { ACTIVITIES, METHODS } from "../../constants"
 
 const Activity = ({ match }: RouteComponentProps<TParams>) => {
   const { isLoading, error, data } = useActivity(match.params.id)
@@ -45,13 +46,13 @@ const Activity = ({ match }: RouteComponentProps<TParams>) => {
       {data.activities.length !== 0 ? (
         <>
           <h3>Activities linked to {data.title}</h3>
-          <CoverCardList cardList={data.activities} resource={"activities"} />
+          <CoverCardList cardList={data.activities} resource={ACTIVITIES} />
         </>
       ) : null}
       {data.methods.length !== 0 ? (
         <>
           <h3>Methods included in this activity</h3>
-          <CoverCardList cardList={data.methods} resource={"methods"} />
+          <CoverCardList cardList={data.methods} resource={METHODS} />
         </>
       ) : null}
     </article>

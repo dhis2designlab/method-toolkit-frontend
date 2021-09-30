@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { METHODS } from "./constants"
+import { METHODS } from "../constants"
 
 export const useMethods = () => {
   return useQuery(
