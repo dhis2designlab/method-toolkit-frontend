@@ -5,7 +5,10 @@ export const DynamicZoneMapper = (component: any) => {
   if (component.component.__component === "common.rich") {
     return <ReactMarkdown>{component.component.rich}</ReactMarkdown>
   }
-  if (component.component.__component === "common.image") {
+  if (
+    component.component.__component === "common.image" &&
+    component.component.image
+  ) {
     return (
       <Image
         image={component.component.image}
