@@ -11,14 +11,20 @@
   align-items: center;
   justify-content: center;
   text-align: left;
-  padding: 16px;
+  padding: 0;
 }
 
 #introductionSection img {
   display: none;
 }
 
-#userStories {
+.mainContent {
+  text-align: left;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+#lastUpdated {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,8 +37,8 @@
 }
 
 @media only screen and (min-width: 768px) {
-  #userStories p {
-    max-width: 600px;
+  #introductionSection {
+    padding: 16px;
   }
 
   #introductionSection img {
