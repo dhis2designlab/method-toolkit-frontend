@@ -1,5 +1,3 @@
-import { getStrapiUrl } from "../../api/getStrapiUrl"
-
 interface StrapiImageInterface {
   image: any
   width: number
@@ -9,7 +7,7 @@ export const StrapiImage = ({
   image,
   width,
 }: StrapiImageInterface): JSX.Element => {
-  const strapiUrl = getStrapiUrl()
+  const strapiUrl = process.env.REACT_APP_STRAPI_URL
   return (
     <img
       src={`${strapiUrl}${image.url}`}
