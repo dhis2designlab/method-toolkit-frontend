@@ -74,7 +74,11 @@ export const InfoBar = ({
             <h4>Pairs well with</h4>
             <div className={styles.pairsWellWith}>
               {methods.map((method: any, index: number) => {
-                return <Link to={`${method.slug}`} key={index}>{method.title}</Link>
+                return (
+                  <Link to={`${method.slug}`} key={index}>
+                    {method.title}
+                  </Link>
+                )
               })}
             </div>
           </div>
