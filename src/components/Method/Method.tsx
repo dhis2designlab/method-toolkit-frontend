@@ -3,7 +3,7 @@ import { RouteComponentProps } from "react-router"
 import { TParams } from "../types"
 import { useMethod } from "../../hooks/useMethod"
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage"
-import MethodHeader from "./components/MethodHeader"
+import StyledHeader from "../StyledHeader/StyledHeader"
 import { InfoBar } from "./components/InfoBar"
 import { DynamicZoneMapper } from "../StrapiComponents/DynamicZoneMapper"
 import styles from "./Method.module.css"
@@ -32,7 +32,7 @@ const Method = ({ match }: RouteComponentProps<TParams>) => {
 
   return (
     <article className={styles.container} key={data[0].id}>
-      <MethodHeader
+      <StyledHeader
         title={data[0].title}
         description={data[0].header.header_description}
         image={data[0].header.header_image}
