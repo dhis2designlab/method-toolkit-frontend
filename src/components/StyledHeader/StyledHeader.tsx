@@ -1,17 +1,15 @@
 import ReactMarkdown from "react-markdown"
-import { StrapiImage } from "../../StrapiComponents/StrapiImage"
+import { StrapiImage } from "../StrapiComponents/StrapiImage"
 
-import styles from "./MethodHeader.module.css"
+import styles from "./StyledHeader.module.css"
 
-interface MethodHeaderProps {
+interface StyledHeaderProps {
   title: string
   description: string
   image?: any
 }
 
-// TODO add strapiimage
-
-const MethodHeader = ({ title, description, image }: MethodHeaderProps) => {
+const StyledHeader = ({ title, description, image }: StyledHeaderProps) => {
   return (
     <div className={styles.methodHeaderContainer}>
       <div className={styles.methodHeader}>
@@ -25,4 +23,4 @@ const MethodHeader = ({ title, description, image }: MethodHeaderProps) => {
   )
 }
 
-export default MethodHeader
+export default StyledHeader
