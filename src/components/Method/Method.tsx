@@ -49,8 +49,8 @@ const Method = ({ match }: RouteComponentProps<TParams>) => {
           />
         ) : null}
         <article className={styles.mainContent}>
-          {data[0].dynamic_zone.map((component: any) => {
-            return <DynamicZoneMapper component={component} />
+          {data[0].dynamic_zone.map((component: any, index: number) => {
+            return <DynamicZoneMapper component={component} key={index} />
           })}
         </article>
       </div>

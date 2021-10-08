@@ -32,8 +32,8 @@ const Home = (): JSX.Element => {
 
       <article className={styles.mainContent}>
         <div>
-          {data.dynamic_zone.map((component: any) => {
-            return <DynamicZoneMapper component={component} />
+          {data.dynamic_zone.map((component: any, index: number) => {
+            return <DynamicZoneMapper component={component} key={index} />
           })}
         </div>
       </article>

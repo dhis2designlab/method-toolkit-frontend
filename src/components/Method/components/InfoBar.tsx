@@ -69,12 +69,12 @@ export const InfoBar = ({
             <p>{capitalizeFirstLetter(difficulty)}</p>
           </div>
         ) : null}
-        {methods ? (
+        {methods && methods.length !== 0 ? (
           <div>
             <h4>Pairs well with</h4>
             <div className={styles.pairsWellWith}>
-              {methods.map((method: any) => {
-                return <Link to={`${method.slug}`}>{method.title}</Link>
+              {methods.map((method: any, index: number) => {
+                return <Link to={`${method.slug}`} key={index}>{method.title}</Link>
               })}
             </div>
           </div>

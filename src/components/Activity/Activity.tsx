@@ -37,8 +37,8 @@ const Activity = ({ match }: RouteComponentProps<TParams>) => {
       <div className={styles.contentContainer}>
         <article className={styles.mainContent}>
           {data.dynamic_zone
-            ? data.dynamic_zone.map((component: any) => {
-                return <DynamicZoneMapper component={component} />
+            ? data.dynamic_zone.map((component: any, index: number) => {
+                return <DynamicZoneMapper component={component} key={index} />
               })
             : null}
         </article>
