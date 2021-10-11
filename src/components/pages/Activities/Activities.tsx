@@ -7,6 +7,7 @@ import { useActivities } from "../../../hooks/useActivities"
 import { CoverCardList } from "../../CoverCardList/CoverCardList"
 import commonStyles from "../commonStyles.module.css"
 import { ACTIVITIES } from "../../../constants"
+import { CenteredLoading } from "../../CenteredLoading/CenteredLoading"
 
 export const Activities = (): JSX.Element => {
   const ACTIVITIES_QUERYKEY = "activities-page"
@@ -35,7 +36,7 @@ export const Activities = (): JSX.Element => {
         )
       : activitiesData
 
-  if (isLoading) return <CircularProgress />
+  if (isLoading) return <CenteredLoading />
 
   if (error) return <ErrorMessage />
 

@@ -1,33 +1,24 @@
 import useFetch from "../../../api/useFetch"
 import ReactMarkdown from "react-markdown"
 import { aboutPageResource } from "../../../api/constants"
-import Alert from "@material-ui/lab/Alert"
-import AlertTitle from "@material-ui/lab/AlertTitle"
-import CircularProgress from "@material-ui/core/CircularProgress"
-
 import styles from "./About.module.css"
+import { CenteredLoading } from "../../CenteredLoading/CenteredLoading"
+import { ErrorMessage } from "../../ErrorMessage/ErrorMessage"
 
 const About = () => {
   const { isLoading, error, response } = useFetch(aboutPageResource)
 
-  if (isLoading) {
-    return (
-      <article className={styles.container}>
-        <CircularProgress />;
-      </article>
-    )
-  }
+  if (isLoading) return <CenteredLoading />
 
-  if (error) {
+  if (error)
     return (
-      <article className={styles.container}>
-        <Alert severity="error">
-          <AlertTitle>Could not fetch the page</AlertTitle>
-          We could not fetch the page you requested. Please try again later.
-        </Alert>
-      </article>
+      <ErrorMessage
+        title={"Could not fetch the page"}
+        description={
+          "We could not fetch the page you requested. Please try again later."
+        }
+      />
     )
-  }
 
   if (response) {
     return (
