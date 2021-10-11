@@ -15,11 +15,13 @@ export const ErrorMessage = ({
     "Could not fetch the content for the page. Please try again later."
 
   return (
-    <div className={styles.errorMessage}>
-      <Alert severity="error">
-        <AlertTitle>{title ?? genericTitle}</AlertTitle>
-        {description ?? genericDescription}
-      </Alert>
+    <div className={styles.errorMessageContainer}>
+      <div className={styles.errorMessages}>
+        <Alert severity="error">
+          <AlertTitle>{title ?? genericTitle}</AlertTitle>
+          {description ?? genericDescription}
+        </Alert>
+      </div>
     </div>
   )
 }
