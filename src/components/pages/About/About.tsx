@@ -1,12 +1,13 @@
-import useFetch from "../../../api/useFetch"
 import ReactMarkdown from "react-markdown"
-import { aboutPageResource } from "../../../api/constants"
 import styles from "./About.module.css"
 import { CenteredLoading } from "../../CenteredLoading/CenteredLoading"
 import { ErrorMessage } from "../../ErrorMessage/ErrorMessage"
+import { usePage } from "../../../hooks/usePage"
+
+const ABOUT_PAGE = "about-page"
 
 const About = () => {
-  const { isLoading, error, response } = useFetch(aboutPageResource)
+  const { isLoading, error, data } = usePage(ABOUT_PAGE, `/${ABOUT_PAGE}`)
 
   if (isLoading) return <CenteredLoading />
 
@@ -20,17 +21,15 @@ const About = () => {
       />
     )
 
-  if (response) {
-    return (
-      <article className={styles.container}>
-        <h1>{response.title}</h1>
-        <ReactMarkdown
-          className={styles.richDescription}
-          children={response.content}
-        />
-      </article>
-    )
-  }
+  return (
+    <article className={styles.container}>
+      <h1>{data.title}</h1>
+      <ReactMarkdown
+        className={styles.richDescription}
+        children={data.content}
+      />
+    </article>
+  )
 }
 
 export default About
