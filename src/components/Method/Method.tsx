@@ -11,7 +11,7 @@ import { CenteredLoading } from "../CenteredLoading/CenteredLoading"
 const Method = ({ match }: RouteComponentProps<TParams>) => {
   const { isLoading, error, data } = useMethod(match.params.id)
 
-  if (isLoading) <CenteredLoading />
+  if (isLoading) return <CenteredLoading />
 
   if (error) {
     return (

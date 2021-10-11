@@ -1,5 +1,5 @@
 .mainContent {
-  max-width: 850px;
+  width: 100%;
   text-align: left;
 }
 
@@ -15,6 +15,10 @@
 @media only screen and (min-width: 768px) {
   .methodHeader > img {
     display: block;
+  }
+
+  .mainContent {
+    max-width: 850px;
   }
 
   .contentDivider {

@@ -19,13 +19,18 @@
 }
 
 .mainContent {
-  max-width: 850px;
   text-align: left;
+  width: 100%;
+  padding: 16px;
 }
 
 @media only screen and (min-width: 768px) {
   .contentContainer {
     max-width: 1250px;
+  }
+
+  .mainContent {
+      max-width: 850px;
   }
 
   .cardList {
