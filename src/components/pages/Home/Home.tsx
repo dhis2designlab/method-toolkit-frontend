@@ -1,17 +1,17 @@
-import CircularProgress from "@material-ui/core/CircularProgress"
 import ReactMarkdown from "react-markdown"
 import { StrapiImage } from "../../StrapiComponents/StrapiImage"
 import styles from "./Home.module.css"
 import { ErrorMessage } from "../../ErrorMessage/ErrorMessage"
 import { usePage } from "../../../hooks/usePage"
 import { DynamicZoneMapper } from "../../StrapiComponents/DynamicZoneMapper"
+import { CenteredLoading } from "../../CenteredLoading/CenteredLoading"
 
 const Home = (): JSX.Element => {
   const HOME_PAGE = "home-page"
 
   const { isLoading, data, error } = usePage(HOME_PAGE, `/${HOME_PAGE}`)
 
-  if (isLoading) return <CircularProgress />
+  if (isLoading) return <CenteredLoading />
   if (error)
     return (
       <ErrorMessage

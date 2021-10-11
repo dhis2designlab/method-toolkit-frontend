@@ -1,4 +1,3 @@
-import CircularProgress from "@material-ui/core/CircularProgress"
 import { RouteComponentProps } from "react-router"
 import { TParams } from "../types"
 import { useActivity } from "../../hooks/useActivity"
@@ -8,17 +7,12 @@ import { CoverCardList } from "../CoverCardList/CoverCardList"
 import styles from "./Activity.module.css"
 import { ACTIVITIES, METHODS } from "../../constants"
 import StyledHeader from "../StyledHeader/StyledHeader"
+import { CenteredLoading } from "../CenteredLoading/CenteredLoading"
 
 const Activity = ({ match }: RouteComponentProps<TParams>) => {
   const { isLoading, error, data } = useActivity(match.params.id)
 
-  if (isLoading) {
-    return (
-      <article className={styles.container}>
-        <CircularProgress />
-      </article>
-    )
-  }
+  if (isLoading) <CenteredLoading />
 
   if (error) {
     return (

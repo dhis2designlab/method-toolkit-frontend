@@ -1,4 +1,3 @@
-import CircularProgress from "@material-ui/core/CircularProgress"
 import { RouteComponentProps } from "react-router"
 import { TParams } from "../types"
 import { useMethod } from "../../hooks/useMethod"
@@ -7,17 +6,12 @@ import StyledHeader from "../StyledHeader/StyledHeader"
 import { InfoBar } from "./components/InfoBar"
 import { DynamicZoneMapper } from "../StrapiComponents/DynamicZoneMapper"
 import styles from "./Method.module.css"
+import { CenteredLoading } from "../CenteredLoading/CenteredLoading"
 
 const Method = ({ match }: RouteComponentProps<TParams>) => {
   const { isLoading, error, data } = useMethod(match.params.id)
 
-  if (isLoading) {
-    return (
-      <article className={styles.container}>
-        <CircularProgress />
-      </article>
-    )
-  }
+  if (isLoading) <CenteredLoading />
 
   if (error) {
     return (

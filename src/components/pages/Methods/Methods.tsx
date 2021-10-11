@@ -7,6 +7,7 @@ import { useMethods } from "../../../hooks/useMethods"
 import { CoverCardList } from "../../CoverCardList/CoverCardList"
 import commonStyles from "../commonStyles.module.css"
 import { METHODS } from "../../../constants"
+import { CenteredLoading } from "../../CenteredLoading/CenteredLoading"
 
 export const Methods = (): JSX.Element => {
   const METHODS_QUERYKEY = "methods-page"
@@ -36,7 +37,7 @@ export const Methods = (): JSX.Element => {
         )
       : methodsData
 
-  if (isLoading) return <CircularProgress />
+  if (isLoading) return <CenteredLoading />
 
   if (error) return <ErrorMessage />
 
