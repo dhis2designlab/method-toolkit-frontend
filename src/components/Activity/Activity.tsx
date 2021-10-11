@@ -12,7 +12,7 @@ import { CenteredLoading } from "../CenteredLoading/CenteredLoading"
 const Activity = ({ match }: RouteComponentProps<TParams>) => {
   const { isLoading, error, data } = useActivity(match.params.id)
 
-  if (isLoading) <CenteredLoading />
+  if (isLoading) return <CenteredLoading />
 
   if (error) {
     return (
