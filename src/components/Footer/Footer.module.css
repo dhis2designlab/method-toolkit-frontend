@@ -19,7 +19,7 @@
 }
 
 .footer h4 {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .upperRow {
@@ -29,7 +29,7 @@
 }
 
 .lowerRow {
-  border-top: 1px solid #FFFFFF;
+  border-top: 1px solid #ffffff;
   padding-top: 16px;
   display: flex;
   flex-direction: column;
@@ -46,11 +46,11 @@
 
 .footer a {
   text-decoration: none;
-  color: #EBEBEB;
+  color: #ebebeb;
 }
 
 .backToTop {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .backToTop:hover {
@@ -85,7 +85,7 @@
 
   .lowerRowRightLinks {
     padding-right: 16px;
-    border-right: #FFFFFF solid 1px;
+    border-right: #ffffff solid 1px;
   }
 
   .backToTop {
@@ -100,7 +100,7 @@
     padding-left: 0;
   }
 
-  .footerList>* {
+  .footerList > * {
     flex: 1 1 1;
-  }  
+  }
 }

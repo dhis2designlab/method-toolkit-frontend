@@ -3,7 +3,6 @@ import styles from "./Footer.module.css"
 import UiOLogo from "../../media/uio-inverse-oneline-1.svg"
 
 const Footer = (): JSX.Element => {
-
   const scrollToTop = (): void => {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
@@ -17,13 +16,21 @@ const Footer = (): JSX.Element => {
             <h4>DHIS2 DESIGN LAB</h4>
             <ul className={styles.footerList}>
               <li>
-                <a href={"https://www.mn.uio.no/ifi/english/research/networks/hisp/dhis2-design-lab/"}>
-                About the lab
+                <a
+                  href={
+                    "https://www.mn.uio.no/ifi/english/research/networks/hisp/dhis2-design-lab/"
+                  }
+                >
+                  About the lab
                 </a>
               </li>
               <li>
-                <a href={"https://www.mn.uio.no/ifi/english/research/networks/hisp/dhis2-design-lab/#projects"}>
-                Projects
+                <a
+                  href={
+                    "https://www.mn.uio.no/ifi/english/research/networks/hisp/dhis2-design-lab/#projects"
+                  }
+                >
+                  Projects
                 </a>
               </li>
             </ul>
@@ -32,24 +39,16 @@ const Footer = (): JSX.Element => {
             <h4>RESOURCES</h4>
             <ul className={styles.footerList}>
               <li>
-                <Link to={"/"}>
-                  Overview
-                </Link>
+                <Link to={"/"}>Overview</Link>
               </li>
               <li>
-                <Link to={"/activities"}>
-                  Activities
-                </Link>
+                <Link to={"/activities"}>Activities</Link>
               </li>
               <li>
-                <Link to={"/methods"}>
-                  Methods
-                </Link>
+                <Link to={"/methods"}>Methods</Link>
               </li>
               <li>
-                <Link to={"/about"}>
-                  About
-                </Link>
+                <Link to={"/about"}>About</Link>
               </li>
             </ul>
           </div>
@@ -57,25 +56,25 @@ const Footer = (): JSX.Element => {
             <h4>PARTNERS</h4>
             <ul className={styles.footerList}>
               <li>
-                <a href={"https://www.uio.no/english/"}>
-                  University of Oslo
-                </a>
+                <a href={"https://www.uio.no/english/"}>University of Oslo</a>
               </li>
               <li>
-                <a href={"https://betterehealth.eu/"}>
-                  BETTEReHEALTH
-                </a>
+                <a href={"https://betterehealth.eu/"}>BETTEReHEALTH</a>
               </li>
             </ul>
           </div>
         </div>
         <div className={styles.lowerRow}>
           <a href={"https://www.uio.no/english/"}>
-          <img src={UiOLogo} alt={"UiO Logo"}></img>
+            <img src={UiOLogo} alt={"UiO Logo"}></img>
           </a>
           <div className={styles.lowerRowRight}>
             <div className={styles.lowerRowRightLinks}>
-              <a href={"https://www.mn.uio.no/ifi/english/research/networks/hisp/dhis2-design-lab/"}>
+              <a
+                href={
+                  "https://www.mn.uio.no/ifi/english/research/networks/hisp/dhis2-design-lab/"
+                }
+              >
                 DHIS2 Design Lab
               </a>
             </div>
