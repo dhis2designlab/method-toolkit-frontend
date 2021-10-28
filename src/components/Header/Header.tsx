@@ -82,6 +82,7 @@ const Header = (): JSX.Element => {
                   <MenuItem
                     onClick={handleClose}
                     key={`mobileMenu ${listElement.name}`}
+                    className={styles.menu}
                   >
                     <Link to={listElement.link}>{listElement.name}</Link>
                   </MenuItem>
