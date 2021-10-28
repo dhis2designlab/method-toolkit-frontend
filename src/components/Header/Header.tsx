@@ -79,7 +79,10 @@ const Header = (): JSX.Element => {
             >
               {listElements.map((listElement) => {
                 return (
-                  <MenuItem onClick={handleClose} key={`mobileMenu ${listElement.name}`}>
+                  <MenuItem
+                    onClick={handleClose}
+                    key={`mobileMenu ${listElement.name}`}
+                  >
                     <Link to={listElement.link}>{listElement.name}</Link>
                   </MenuItem>
                 )
@@ -88,9 +91,13 @@ const Header = (): JSX.Element => {
           </div>
         </div>
         <div className={styles.containerRight}>
-        {listElements.map((listElement) => {
-          return <Link key={listElement.name} to={listElement.link}>{listElement.name}</Link>
-        })}
+          {listElements.map((listElement) => {
+            return (
+              <Link key={listElement.name} to={listElement.link}>
+                {listElement.name}
+              </Link>
+            )
+          })}
         </div>
       </div>
     </nav>
