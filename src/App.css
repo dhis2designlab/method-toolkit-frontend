@@ -5,3 +5,7 @@
   margin: 0 auto;
   flex-direction: column;
 }
+
+.Container {
+  flex-grow: 1;
+}
