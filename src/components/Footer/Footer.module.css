@@ -1,11 +1,9 @@
 .footer {
   width: 100%;
   bottom: 0;
-  padding: 8px 0;
-  margin: 0;
+  margin: 32px 0 0 0;
   background-color: #232933;
   color: #a0adba;
-  margin-top: auto;
   display: flex;
   justify-content: center;
   text-align: left;
@@ -14,7 +12,7 @@
 .container {
   width: 100%;
   display: flex;
-  padding: 16px;
+  padding: 32px;
   flex-direction: column;
 }
 
