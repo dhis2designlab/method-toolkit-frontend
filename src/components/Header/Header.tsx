@@ -42,7 +42,6 @@ const Header = (): JSX.Element => {
     setAnchorEl(null)
   }
 
-
   useEffect(() => {
     const handleActivePage = (): void => {
       listElements.map((listElement) =>
