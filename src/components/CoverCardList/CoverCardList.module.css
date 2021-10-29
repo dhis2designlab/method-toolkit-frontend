@@ -13,6 +13,7 @@
     .cardList {
       width: 100%;
       flex-wrap: wrap;
+      align-items: unset;
       flex-direction: row;
       align-content: stretch;
       row-gap: 32px;
