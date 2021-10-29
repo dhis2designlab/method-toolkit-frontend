@@ -27,7 +27,7 @@
 }
 
 .lowerRow {
-  border-top: 1px solid #ffffff;
+  border-top: 1px solid #ebebeb;
   padding-top: 16px;
   display: flex;
   flex-direction: column;
@@ -42,9 +42,18 @@
   flex-direction: column;
 }
 
-.footer a {
+.lowerRowRight a, .upperRow a {
   text-decoration: none;
   color: #ebebeb;
+  padding: 8px 0;
+}
+
+.lowerRowRight a:hover, .upperRow a:hover {
+  border-bottom: 3px solid #ebebeb;
+}
+
+.footer li {
+  padding: 16px;
 }
 
 .backToTop {

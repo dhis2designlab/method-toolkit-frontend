@@ -24,7 +24,16 @@ export const CoverCard = ({
       <h3>{title}</h3>
       <p>{cardContent}</p>
       <Link id={styles.cardButton} to={`/${resource}/${slug ?? id}`}>
-        <Button variant="outlined">Read more</Button>
+        <Button
+          style={{
+            color: "#064468",
+            background: "rgba(163, 198, 218, 0.29)",
+            borderRadius: "4px",
+          }}
+          variant="outlined"
+        >
+          Read more
+        </Button>
       </Link>
     </Card>
   )

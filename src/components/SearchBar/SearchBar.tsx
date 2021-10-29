@@ -33,11 +33,12 @@ const SearchBar = ({ placeholderForTextField, handleTextChange }: search) => {
           placeholder={placeholderForTextField ?? undefined}
           variant="outlined"
           size="small"
-          onChange={(e) => handleTextChange(e.target.value)}
+          style={{ borderColor: "#A3C6DA", backgroundColor: "#FAFCFD" }}
+          onChange={(e) => handleTextChange(e.target.value.toLowerCase())}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon style={{ fill: "#4F90CB" }} />
               </InputAdornment>
             ),
           }}
@@ -46,6 +47,7 @@ const SearchBar = ({ placeholderForTextField, handleTextChange }: search) => {
           variant="contained"
           endIcon={expanded ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
           onClick={() => setExpanded(!expanded)}
+          style={{ backgroundColor: "#064468", color: "#FFFFFF" }}
         >
           Filters
         </Button>

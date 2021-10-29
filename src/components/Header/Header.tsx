@@ -4,7 +4,8 @@ import IconButton from "@material-ui/core/IconButton"
 import Menu from "@material-ui/core/Menu"
 import MenuItem from "@material-ui/core/MenuItem"
 import MenuIcon from "@material-ui/icons/Menu"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useLocation } from "react-router"
 
 import styles from "./Header.module.css"
 
@@ -28,15 +29,30 @@ const listElements = [
 ]
 
 const Header = (): JSX.Element => {
+  const [activePage, setActivePage] = useState<null | string>(null)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+
+  const location = useLocation()
 
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
-  const handleClose = () => {
+  const handleClose = (): void => {
     setAnchorEl(null)
   }
+
+  useEffect(() => {
+    const handleActivePage = (): void => {
+      listElements.map((listElement) =>
+        window.location.href.includes(listElement.link)
+          ? setActivePage(listElement.link)
+          : null
+      )
+    }
+
+    handleActivePage()
+  }, [location])
 
   const ITEM_HEIGHT = 48
 
@@ -94,9 +110,16 @@ const Header = (): JSX.Element => {
         <div className={styles.containerRight}>
           {listElements.map((listElement) => {
             return (
-              <Link key={listElement.name} to={listElement.link}>
-                {listElement.name}
-              </Link>
+              <li
+                key={listElement.name}
+                className={
+                  listElement.link === activePage
+                    ? styles.activePage
+                    : undefined
+                }
+              >
+                <Link to={listElement.link}>{listElement.name}</Link>
+              </li>
             )
           })}
         </div>
