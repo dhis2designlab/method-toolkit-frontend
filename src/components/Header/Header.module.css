@@ -21,14 +21,22 @@
   max-width: 1250px;
 }
 
-.container a {
+.containerRight a {
   text-decoration: none;
   color: black;
+  padding: 8px 0;
 }
 
-.container a:hover {
-  color: grey;
-  transition: color 5ms;
+.containerRight a:hover {
+  border-bottom: #EC1C24 solid 3px;
+}
+
+.activePage a {
+  border-bottom: #EC1C24 solid 3px;
+}
+
+.containerRight li {
+  padding: 16px;
 }
 
 .containerLeft {
@@ -42,10 +50,6 @@
 .logo {
   width: 50px;
   height: 50px;
-}
-
-li {
-  padding: 16px;
 }
 
 @media only screen and (min-width: 768px) {
