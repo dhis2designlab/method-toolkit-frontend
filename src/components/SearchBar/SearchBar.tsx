@@ -33,7 +33,7 @@ const SearchBar = ({ placeholderForTextField, handleTextChange }: search) => {
           placeholder={placeholderForTextField ?? undefined}
           variant="outlined"
           size="small"
-          onChange={(e) => handleTextChange(e.target.value)}
+          onChange={(e) => handleTextChange(e.target.value.toLowerCase())}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
