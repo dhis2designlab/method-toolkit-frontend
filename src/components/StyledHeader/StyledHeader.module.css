@@ -4,6 +4,10 @@
     color: #FFFFFF;
     text-align: left;
   }
+
+  .methodHeaderContainer h1 {
+    color: #FFFFFF;
+  }
   
   .methodHeader {
     display: flex;
