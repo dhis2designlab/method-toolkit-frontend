@@ -48,6 +48,9 @@ const Footer = (): JSX.Element => {
                 <Link to={"/methods"}>Methods</Link>
               </li>
               <li>
+                <Link to={"/user-stories"}>User stories</Link>
+              </li>
+              <li>
                 <Link to={"/about"}>About</Link>
               </li>
             </ul>
