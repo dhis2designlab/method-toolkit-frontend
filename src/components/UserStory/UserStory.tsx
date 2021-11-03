@@ -33,10 +33,10 @@ const UserStory = ({ match }: RouteComponentProps<TParams>) => {
                 return <DynamicZoneMapper component={component} key={index} />
               })
             : null}
-          {data.contact && data.contact.length !== 0 ? (
+          {data.contacts && data.contacts.length !== 0 ? (
             <>
               <p id={styles.contactHeader}>Contact information:</p>
-              {data.contact.map((contact: any) => {
+              {data.contacts.map((contact: any) => {
                 return (
                   <Contact
                     name={contact.name}
