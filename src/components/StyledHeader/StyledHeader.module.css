@@ -17,8 +17,8 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    align-self: center;
     margin: 0 auto;
-    max-width: 1250px;
     padding: 16px;
   }
   
@@ -31,6 +31,10 @@
   }
 
   @media only screen and (min-width: 768px) {
+    .methodHeader {
+      max-width: 1440px;
+    }
+
     .methodHeader > img {
       display: block;
     }
