@@ -21,12 +21,12 @@
 
 @media only screen and (min-width: 768px) {
   .pageHeader {
-    max-width: 850px;
+    max-width: 900px;
   }
 
   .cardList {
     padding-top: 64px;
-    max-width: 1250px;
+    max-width: 1440px;
     width: 100%;
     flex-wrap: wrap;
     flex-direction: row;

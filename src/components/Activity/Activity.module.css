@@ -26,11 +26,11 @@
 
 @media only screen and (min-width: 768px) {
   .contentContainer {
-    max-width: 1250px;
+    max-width: 1440px;
   }
 
   .mainContent {
-      max-width: 850px;
+      max-width: 900px;
   }
 
   .cardList {
