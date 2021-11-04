@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import styles from "./Footer.module.css"
-import UiOLogo from "../../media/uio-inverse-oneline-1.svg"
+import UiOLogo from "../../media/uio-negative-logo.png"
 
 const Footer = (): JSX.Element => {
   const scrollToTop = (): void => {

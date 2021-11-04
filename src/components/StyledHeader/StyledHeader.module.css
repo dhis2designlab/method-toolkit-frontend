@@ -3,6 +3,10 @@
     background-color: #396B9B;
     color: #FFFFFF;
     text-align: left;
+    margin-bottom: 64px;
+    display: flex;
+    align-items: center;
+    min-height: 256px;
   }
 
   .methodHeaderContainer h1 {
@@ -13,8 +17,8 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    align-self: center;
     margin: 0 auto;
-    max-width: 1250px;
     padding: 16px;
   }
   
@@ -27,6 +31,10 @@
   }
 
   @media only screen and (min-width: 768px) {
+    .methodHeader {
+      max-width: 1440px;
+    }
+
     .methodHeader > img {
       display: block;
     }
