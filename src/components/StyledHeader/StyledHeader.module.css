@@ -3,6 +3,10 @@
     background-color: #396B9B;
     color: #FFFFFF;
     text-align: left;
+    margin-bottom: 64px;
+    display: flex;
+    align-items: center;
+    min-height: 256px;
   }
 
   .methodHeaderContainer h1 {
