@@ -42,6 +42,10 @@
   flex-direction: column;
 }
 
+.lowerRow img {
+  width: 200px;
+}
+
 .lowerRowRight a, .upperRow a {
   text-decoration: none;
   color: #ebebeb;
@@ -81,7 +85,6 @@
 
   .lowerRow {
     flex-direction: row;
-    align-items: baseline;
     justify-content: space-between;
   }
 
