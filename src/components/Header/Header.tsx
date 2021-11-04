@@ -90,6 +90,7 @@ const Header = (): JSX.Element => {
               anchorEl={anchorEl}
               open={open}
               onClose={handleClose}
+              className={styles.menu}
               PaperProps={{
                 style: {
                   maxHeight: ITEM_HEIGHT * 4.5,
@@ -99,13 +100,14 @@ const Header = (): JSX.Element => {
             >
               {listElements.map((listElement) => {
                 return (
-                  <MenuItem
-                    onClick={handleClose}
-                    key={`mobileMenu ${listElement.name}`}
-                    className={styles.menu}
-                  >
-                    <Link to={listElement.link}>{listElement.name}</Link>
-                  </MenuItem>
+                  <Link to={listElement.link}>
+                    <MenuItem
+                      onClick={handleClose}
+                      key={`mobileMenu ${listElement.name}`}
+                    >
+                      {listElement.name}
+                    </MenuItem>
+                  </Link>
                 )
               })}
             </Menu>
