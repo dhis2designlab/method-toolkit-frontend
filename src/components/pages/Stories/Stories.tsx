@@ -5,12 +5,12 @@ import { ErrorMessage } from "../../ErrorMessage/ErrorMessage"
 import SearchBar from "../../SearchBar/SearchBar"
 import { CoverCardList } from "../../CoverCardList/CoverCardList"
 import commonStyles from "../commonStyles.module.css"
-import { USER_STORIES } from "../../../constants"
+import { STORIES } from "../../../constants"
 import { CenteredLoading } from "../../CenteredLoading/CenteredLoading"
-import { useUserStories } from "../../../hooks/useUserStories"
+import { useStories } from "../../../hooks/useStories"
 
-export const UserStories = (): JSX.Element => {
-  const USER_STORIES_QUERYKEY = "user-stories-page"
+export const Stories = (): JSX.Element => {
+  const STORIES_QUERYKEY = "user-stories-page"
 
   const [textSearch, setTextSearch] = useState<string>("")
   const handleTextSearch = (newValue: string) => {
@@ -18,24 +18,24 @@ export const UserStories = (): JSX.Element => {
   }
 
   const { isLoading, error, data } = usePage(
-    USER_STORIES_QUERYKEY,
-    `/${USER_STORIES_QUERYKEY}`
+    STORIES_QUERYKEY,
+    `/${STORIES_QUERYKEY}`
   )
 
   const {
-    isLoading: userStoriesIsLoading,
-    data: userStoriesData,
-    error: userStoriesError,
-  } = useUserStories()
+    isLoading: storiesIsLoading,
+    data: storiesData,
+    error: storiesError,
+  } = useStories()
 
   const filteredUserStories =
     textSearch !== ""
-      ? userStoriesData.filter(
+      ? storiesData.filter(
           (userStory: any) =>
             userStory.title.toLowerCase().includes(textSearch) ||
             userStory.cover.short_description.toLowerCase().includes(textSearch)
         )
-      : userStoriesData
+      : storiesData
 
   if (isLoading) return <CenteredLoading />
 
@@ -49,23 +49,20 @@ export const UserStories = (): JSX.Element => {
       </div>
 
       <SearchBar
-        placeholderForTextField="Search for user stories!"
+        placeholderForTextField="Search for stories!"
         handleTextChange={handleTextSearch}
       />
 
-      {userStoriesIsLoading ? (
+      {storiesIsLoading ? (
         <CircularProgress />
-      ) : userStoriesError ? (
+      ) : storiesError ? (
         <ErrorMessage
-          title={"Could not fetch user stories"}
-          description="We had some problems fetching the user stories for you. Please try again later."
+          title={"Could not fetch stories"}
+          description="We had some problems fetching the stories for you. Please try again later."
         />
       ) : (
         <div className={commonStyles.cardList}>
-          <CoverCardList
-            cardList={filteredUserStories}
-            resource={USER_STORIES}
-          />
+          <CoverCardList cardList={filteredUserStories} resource={STORIES} />
         </div>
       )}
     </section>

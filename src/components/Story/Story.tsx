@@ -2,22 +2,22 @@ import { RouteComponentProps } from "react-router"
 import { TParams } from "../types"
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage"
 import { DynamicZoneMapper } from "../StrapiComponents/DynamicZoneMapper"
-import styles from "./UserStory.module.css"
+import styles from "./Story.module.css"
 import { CenteredLoading } from "../CenteredLoading/CenteredLoading"
-import { useUserStory } from "../../hooks/useUserStory"
+import { useStory } from "../../hooks/useStory"
 import { Contact } from "./Contact"
 
 const UserStory = ({ match }: RouteComponentProps<TParams>) => {
-  const { isLoading, error, data } = useUserStory(match.params.id)
+  const { isLoading, error, data } = useStory(match.params.id)
 
   if (isLoading) return <CenteredLoading />
 
   if (error) {
     return (
       <ErrorMessage
-        title={"Could not fetch activity"}
+        title={"Could not fetch story"}
         description={
-          "Could not fetch the activity you requested. Please try again later."
+          "Could not fetch the story you requested. Please try again later."
         }
       />
     )

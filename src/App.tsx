@@ -9,8 +9,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { Activities } from "./components/pages/Activities/Activities"
 import { Methods } from "./components/pages/Methods/Methods"
 import { QueryClient, QueryClientProvider } from "react-query"
-import { UserStories } from "./components/pages/UserStories/UserStories"
-import UserStory from "./components/UserStory/UserStory"
+import { Stories } from "./components/pages/Stories/Stories"
+import UserStory from "./components/Story/Story"
 
 const queryClient = new QueryClient()
 
@@ -25,7 +25,7 @@ function App() {
               <Route path="/" exact component={Home} />
               <Route path="/methods" exact component={Methods} />
               <Route path="/methods/:id" component={Method} />
-              <Route path="/user-stories" exact component={UserStories} />
+              <Route path="/user-stories" exact component={Stories} />
               <Route path="/user-stories/:id" component={UserStory} />
               <Route path="/activities" exact component={Activities} />
               <Route path="/activities/:id" component={Activity} />

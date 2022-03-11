@@ -7,6 +7,8 @@ import { InfoBar } from "./components/InfoBar"
 import { DynamicZoneMapper } from "../StrapiComponents/DynamicZoneMapper"
 import styles from "./Method.module.css"
 import { CenteredLoading } from "../CenteredLoading/CenteredLoading"
+import { STORIES } from "../../constants"
+import { CoverCardList } from "../CoverCardList/CoverCardList"
 
 const Method = ({ match }: RouteComponentProps<TParams>) => {
   const { isLoading, error, data } = useMethod(match.params.id)
@@ -48,6 +50,12 @@ const Method = ({ match }: RouteComponentProps<TParams>) => {
           })}
         </article>
       </div>
+      {data[0].user_stories.length !== 0 ? (
+        <>
+          <h1>Stories related to {data[0].title}</h1>
+          <CoverCardList cardList={data[0].user_stories} resource={STORIES} />
+        </>
+      ) : null}
     </article>
   )
 }

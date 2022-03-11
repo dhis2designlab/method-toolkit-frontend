@@ -5,7 +5,7 @@ import { ErrorMessage } from "../ErrorMessage/ErrorMessage"
 import { DynamicZoneMapper } from "../StrapiComponents/DynamicZoneMapper"
 import { CoverCardList } from "../CoverCardList/CoverCardList"
 import styles from "./Activity.module.css"
-import { ACTIVITIES, METHODS } from "../../constants"
+import { ACTIVITIES, METHODS, STORIES } from "../../constants"
 import StyledHeader from "../StyledHeader/StyledHeader"
 import { CenteredLoading } from "../CenteredLoading/CenteredLoading"
 
@@ -44,8 +44,14 @@ const Activity = ({ match }: RouteComponentProps<TParams>) => {
         ) : null}
         {data.methods.length !== 0 ? (
           <>
-            <h3>Methods included in this activity</h3>
+            <h3>Methods included in {data.title}</h3>
             <CoverCardList cardList={data.methods} resource={METHODS} />
+          </>
+        ) : null}
+        {data.user_stories.length !== 0 ? (
+          <>
+            <h1>Stories related to {data.title}</h1>
+            <CoverCardList cardList={data.user_stories} resource={STORIES} />
           </>
         ) : null}
       </div>
