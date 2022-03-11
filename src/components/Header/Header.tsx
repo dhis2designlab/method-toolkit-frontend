@@ -23,8 +23,8 @@ const listElements = [
     link: "/methods",
   },
   {
-    name: "User stories",
-    link: "/user-stories",
+    name: "Stories",
+    link: "/stories",
   },
   {
     name: "About",

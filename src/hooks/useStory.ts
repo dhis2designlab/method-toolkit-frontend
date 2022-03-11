@@ -1,10 +1,10 @@
 import { useQuery } from "react-query"
-import { STORIES } from "../constants"
+import { STORIES_STRAPI } from "../constants"
 
 export const useStory = (id: string) => {
-  return useQuery([STORIES, id], async () => {
+  return useQuery([STORIES_STRAPI, id], async () => {
     const response = await fetch(
-      `${process.env.REACT_APP_STRAPI_URL}/${STORIES}/${id}`
+      `${process.env.REACT_APP_STRAPI_URL}/${STORIES_STRAPI}/${id}`
     )
 
     if (!response.ok) {

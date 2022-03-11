@@ -10,7 +10,7 @@ import { Activities } from "./components/pages/Activities/Activities"
 import { Methods } from "./components/pages/Methods/Methods"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { Stories } from "./components/pages/Stories/Stories"
-import UserStory from "./components/Story/Story"
+import Story from "./components/Story/Story"
 
 const queryClient = new QueryClient()
 
@@ -25,8 +25,8 @@ function App() {
               <Route path="/" exact component={Home} />
               <Route path="/methods" exact component={Methods} />
               <Route path="/methods/:id" component={Method} />
-              <Route path="/user-stories" exact component={Stories} />
-              <Route path="/user-stories/:id" component={UserStory} />
+              <Route path="/stories" exact component={Stories} />
+              <Route path="/stories/:id" component={Story} />
               <Route path="/activities" exact component={Activities} />
               <Route path="/activities/:id" component={Activity} />
               <Route path="/about" exact component={About} />

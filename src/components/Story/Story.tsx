@@ -7,7 +7,7 @@ import { CenteredLoading } from "../CenteredLoading/CenteredLoading"
 import { useStory } from "../../hooks/useStory"
 import { Contact } from "./Contact"
 
-const UserStory = ({ match }: RouteComponentProps<TParams>) => {
+const Story = ({ match }: RouteComponentProps<TParams>) => {
   const { isLoading, error, data } = useStory(match.params.id)
 
   if (isLoading) return <CenteredLoading />
@@ -53,4 +53,4 @@ const UserStory = ({ match }: RouteComponentProps<TParams>) => {
   )
 }
 
-export default UserStory
+export default Story
