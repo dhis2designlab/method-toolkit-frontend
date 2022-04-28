@@ -1,4 +1,5 @@
 # Method Toolkit Frontend
+This is the frontend application of the Design Method Toolkit. It is a resource to support partners within the DHIS2 Ecosystem with the use of design methods.
 
 ## Set up
 In order to run the app you will need to first install the dependencies for the application.
